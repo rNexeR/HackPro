@@ -4,7 +4,7 @@ namespace HackPro.Models
 {
     public class Login
     {
-        [Required]
+        [Required(ErrorMessage = "Llenar el campo de email.")]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Correo de formato inválido.")]
         public string email { get; set; }
 
