@@ -30,7 +30,11 @@ namespace HackPro.Controllers
                 if (log.email == "rnexer@gmail.com" && log.password == "nexerodriguez")
                 {
                     return View("Index");
-                }                
+                }
+                else
+                {
+                    ModelState.AddModelError("email","Error: Correo o Pass Incorrecto");
+                }              
             }
                      
             return View();            
