@@ -30,16 +30,10 @@ namespace HackPro.Controllers
                 if (log.email == "rnexer@gmail.com" && log.password == "nexerodriguez")
                 {
                     return View("Index");
-                }
-                else
-                {
-                    return View();
-                }
+                }                
             }
-            else
-            {
-                return View();
-            }
+                     
+            return View();            
         }
     }
 }
