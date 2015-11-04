@@ -1,5 +1,18 @@
 ﻿<link rel="stylesheet" href="~/Content/css/style.css">
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>AdminLTE 2 | Log in</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.5 -->
+<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+<!-- iCheck -->
+<link href="~/Content/plugins/iCheck/square/blue.css" rel="stylesheet" />
 @model HackPro.Models.Login
 
 @{
@@ -12,23 +25,57 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Hack</b>Pro
+        </div><!-- /.login-logo -->
+        <div class="login-box-body">
+
+            <p class="login-box-msg">Conéctese para iniciar sesión</p>
+            <!-- <form action="../../index2.html" method="post">-->
+                <div class="form-group has-feedback">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input type="checkbox"> Recordarme
+                            </label>
+                        </div>
+                    </div><!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    </div><!-- /.col -->
+                </div>
+            <!-- </form>-->
+                
+            <a href="#">Olvidé mi contraseña</a><br>
+        
+        </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
+
+    /*
     <div class="form-horizontal">
        
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -37,7 +84,7 @@
                 <input type="submit" value="Login" class="btn btn-default" />
             </div>
         </div>
-    </div>
+    </div>*/
 }
 
 <div>
