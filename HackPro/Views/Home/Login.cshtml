@@ -1,6 +1,5 @@
 ﻿<link rel="stylesheet" href="~/Content/css/style.css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 2 | Log in</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!-- Bootstrap 3.3.5 -->
@@ -19,29 +18,26 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
-
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="login-box">
+    <div class="login-box" style="background-color: white; border-radius: 5px; opacity: 0.8">
         <div class="login-logo">
-            <b>Hack</b>Pro
+            <a href="/Home/Index"><b>Hack</b>Pro</a>
         </div><!-- /.login-logo -->
-        <div class="login-box-body">
-
-            <p class="login-box-msg">Conéctese para iniciar sesión</p>
-            <!-- <form action="../../index2.html" method="post">-->
+        <div class="login-box-body" style="background-color: white; border-radius: 5px; opacity: 0.8">
+                <p class="login-box-msg">Conéctese para iniciar sesión</p>
+                <!-- <form action="../../index2.html" method="post">-->
                 <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "E-Mail" } })
                     @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password" } })
                     @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
@@ -57,9 +53,10 @@
                         <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                     </div><!-- /.col -->
                 </div>
-            <!-- </form>-->
-                
-            <a href="#">Olvidé mi contraseña</a><br>
+                <!-- </form>-->
+
+                <a href="#">Olvidé mi contraseña</a><br>
+            
         
         </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
@@ -87,9 +84,6 @@
     </div>*/
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
