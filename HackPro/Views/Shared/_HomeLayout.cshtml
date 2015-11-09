@@ -4,18 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HackPRO - @ViewBag.Title</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/Index.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body class="body">
-    <div class="container body-content">
         @RenderBody()
-        <hr style="position: relative; margin-top: 40%" />
-        <footer>
-            <p style="color: white; text-align: center"> @DateTime.Now.Year - HackPro</p>
-        </footer>
-    </div>
+    <footer>
+        <hr />
+        <p style="color: white; text-align: center"> @DateTime.Now.Year - HackPro</p>
+    </footer>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
