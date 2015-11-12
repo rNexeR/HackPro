@@ -21,10 +21,21 @@ namespace HackPro.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Usuarios user)
+        {
+            return View("Index");
         }
 
         [HttpPost]

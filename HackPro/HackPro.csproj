@@ -1073,6 +1073,7 @@
     <Compile Include="Models\tbl_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1086,6 +1087,7 @@
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_LoggedLayout.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
