@@ -32,14 +32,17 @@ namespace HackPro.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (log.email == "rnexer@gmail.com" && log.password == "nexerodriguez")
+                hackprodb_1Entities db = new hackprodb_1Entities();
+                var login = db.tbl_usuario.Where(p => p.tbl_usuario_correo.Equals(log.email)  && p.tbl_usuario_password.Equals(log.password));
+                if (login.Count() == 1)
                 {
+                    Session["username"] = "Nexer";
                     return View("Index");
                 }
                 else
                 {
-                    ModelState.AddModelError("email","Error: Correo o Pass Incorrecto");
-                }              
+                    ModelState.AddModelError("Password", "Email or Password not valid");
+                }
             }
                      
             return View();            
