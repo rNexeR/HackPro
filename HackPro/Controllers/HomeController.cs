@@ -61,6 +61,7 @@ namespace HackPro.Controllers
                         usuario.tbl_usuario_ocupacion = user.ocupacion;
                         usuario.tbl_usuario_password = user.password;
                         usuario.tbl_usuario_fecha_nac = user.fecha_nac;
+                        usuario.tbl_usuario_celular = "88888888";//falta que no sea hard-coded
                         usuario.tbl_usuario_activo = true;
                         usuario.tbl_usuario_genero = user.genero;
                         usuario.tbl_usuario_fecha_crea = DateTime.Now;
