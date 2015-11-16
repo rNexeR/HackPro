@@ -45,7 +45,7 @@ namespace HackPro.Controllers
                 }
                 else
                 {
-                    if (user.password == user.r_password)
+                    if (user.password != user.r_password)
                     {
                         ModelState.AddModelError("r_password", "Existe un usuario con el mismo correo");
                     }
@@ -64,7 +64,9 @@ namespace HackPro.Controllers
                         usuario.tbl_usuario_activo = true;
                         usuario.tbl_usuario_genero = user.genero;
                         usuario.tbl_usuario_fecha_crea = DateTime.Now;
+                        usuario.tbl_usuario_admin = false;
                         db.tbl_usuario.Add(usuario);
+                        db.SaveChanges();
                         return View("Login");
                     }
                 }
