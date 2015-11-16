@@ -1,106 +1,114 @@
 ﻿@model HackPro.Models.Usuarios
 
+<link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/Content/dist/css/AdminLTE.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="~/Content/plugins/iCheck/square/blue.css">
+
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Usuarios</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.correo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
+    <hr />
+    <div class="register-box" style="background-color: white; border-radius: 5px; opacity: 0.8">
+        <div class="register-logo">
+            <a href="/Home/Index"><b>Hack</b>PRO</a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">Register a new membership</p>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo" } })
                 @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.p_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.p_nombre, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.p_nombre, new { htmlAttributes = new { @class = "form-control", @placeholder = "Primer Nombre" } })
                 @Html.ValidationMessageFor(model => model.p_nombre, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.s_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.s_nombre, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.s_nombre, new { htmlAttributes = new { @class = "form-control", @placeholder = "Segundo Nombre" } })
                 @Html.ValidationMessageFor(model => model.s_nombre, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.p_apellido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.p_apellido, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.p_apellido, new { htmlAttributes = new { @class = "form-control", @placeholder = "Primer Apellido" } })
                 @Html.ValidationMessageFor(model => model.p_apellido, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.s_apellido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.s_apellido, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.s_apellido, new { htmlAttributes = new { @class = "form-control", @placeholder = "Segundo Apellido" } })
                 @Html.ValidationMessageFor(model => model.s_apellido, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.r_password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Retype Password", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.r_password, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username" } })
                 @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.genero, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.genero, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.genero, new { htmlAttributes = new { @class = "form-control", @placeholder = "Genero" } })
                 @Html.ValidationMessageFor(model => model.genero, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-parents form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ocupacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ocupacion, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.ocupacion, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ocupacion" } })
                 @Html.ValidationMessageFor(model => model.ocupacion, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fecha_nac, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group has-feedback">
+                @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fecha Nacimiento" } })
                 @Html.ValidationMessageFor(model => model.fecha_nac, "", new { @class = "text-danger" })
+                <span class="glyphicon glyphicon-stroller form-control-feedback"></span>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Register" class="btn btn-default" />
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <a href="/Home/Login" class="text-center">I already have a membership</a>
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div><!-- /.col -->
             </div>
-        </div>
-    </div>
+
+        </div><!-- /.form-box -->
+    </div><!-- /.register-box -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="~/Content/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/Content/plugins/iCheck/icheck.min.js"></script>
+
+    
 }
 
 <div>

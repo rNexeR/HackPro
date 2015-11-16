@@ -26,6 +26,9 @@ namespace HackPro.Models
         public string password { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
+        public string r_password { get; set; }
+
+        [Required(ErrorMessage = "Campo Requerido")]
         public string username { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
