@@ -37,6 +37,9 @@ namespace HackPro.Models
         [Required(ErrorMessage = "Campo Requerido")]
         public string ocupacion { get; set; }
 
+        [Required(ErrorMessage = "Campo Requerido")]
+        public string celular { get; set; }
+        
         public System.DateTime fecha_nac { get; set; }
     }
 }

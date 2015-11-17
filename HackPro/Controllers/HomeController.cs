@@ -55,13 +55,13 @@ namespace HackPro.Controllers
                         usuario.tbl_usuario_correo = user.correo;
                         usuario.tbl_usuario_username = user.username;
                         usuario.tbl_usuario_p_nombre = user.p_nombre;
-                        usuario.tbl_usuario_s_nombre = user.s_nombre;
+                        usuario.tbl_usuario_s_nombre = user.s_nombre ?? "";
                         usuario.tbl_usuario_p_apellido = user.p_apellido;
-                        usuario.tbl_usuario_s_apellido = user.s_apellido;
+                        usuario.tbl_usuario_s_apellido = user.s_apellido ?? "";
                         usuario.tbl_usuario_ocupacion = user.ocupacion;
                         usuario.tbl_usuario_password = user.password;
                         usuario.tbl_usuario_fecha_nac = user.fecha_nac;
-                        usuario.tbl_usuario_celular = "88888888";//falta que no sea hard-coded
+                        usuario.tbl_usuario_celular = user.celular;//falta que no sea hard-coded
                         usuario.tbl_usuario_activo = true;
                         usuario.tbl_usuario_genero = user.genero;
                         usuario.tbl_usuario_fecha_crea = DateTime.Now;
@@ -86,7 +86,7 @@ namespace HackPro.Controllers
                 var login = db.tbl_usuario.Where(p => p.tbl_usuario_correo.Equals(log.email)  && p.tbl_usuario_password.Equals(log.password));
                 if (login.Count() == 1)
                 {
-                    Session["username"] = "Nexer";
+                    
                     return View("Index");
                 }
                 else
