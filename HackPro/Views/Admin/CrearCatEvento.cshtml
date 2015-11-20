@@ -1,0 +1,29 @@
+﻿@model HackPro.Models.Cat_Evento
+
+@{
+    ViewBag.Title = "Crear categoria de Evento";
+    Layout = "~/Views/Shared/_LoggedLayout.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.tbl_cat_evento_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tbl_cat_evento_desc, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descripcion de la Categoria" } })
+                @Html.ValidationMessageFor(model => model.tbl_cat_evento_desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear" class="btn btn-info pull-right" />
+            </div>
+        </div>
+    </div>
+}

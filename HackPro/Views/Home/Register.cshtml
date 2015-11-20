@@ -18,7 +18,6 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    <hr />
     <div class="register-box" style="background-color: white; border-radius: 5px; opacity: 0.8">
         <div class="register-logo">
             <a href="/Home/Index"><b>Hack</b>PRO</a>
@@ -85,7 +84,7 @@
                 <span class="glyphicon glyphicon-iphone form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fecha Nacimiento" } })
+                @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control", @type="date", @placeholder = "Fecha Nacimiento" } })
                 @Html.ValidationMessageFor(model => model.fecha_nac, "", new { @class = "text-danger" })
                 <span class="glyphicon glyphicon-stroller form-control-feedback"></span>
             </div>

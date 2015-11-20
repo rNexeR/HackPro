@@ -98,9 +98,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-switch.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-switch.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap-switch.js" />
+    <Content Include="Content\bootstrap\js\bootstrap-switch.min.js" />
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\bootstrap\js\npm.js" />
@@ -1018,6 +1022,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cat_Evento.cs" />
+    <Compile Include="Models\Equipo.cs" />
+    <Compile Include="Models\Evento.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -1092,6 +1099,12 @@
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Usuarios.cshtml" />
+    <Content Include="Views\Home\CrearEvento.cshtml" />
+    <Content Include="Views\Admin\ListarEventos.cshtml" />
+    <Content Include="Views\Admin\CrearCatEvento.cshtml" />
+    <Content Include="Views\Home\CrearEquipo.cshtml" />
+    <Content Include="Views\Admin\ListarEquipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
