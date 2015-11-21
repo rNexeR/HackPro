@@ -1105,6 +1105,7 @@
     <Content Include="Views\Admin\CrearCatEvento.cshtml" />
     <Content Include="Views\Home\CrearEquipo.cshtml" />
     <Content Include="Views\Admin\ListarEquipos.cshtml" />
+    <Content Include="Views\Admin\ListarCatEventos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

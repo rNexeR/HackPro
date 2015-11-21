@@ -62,7 +62,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.tbl_evento_fecha_inicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_fecha_inicio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fecha Inicio del Evento" } })
+                @Html.EditorFor(model => model.tbl_evento_fecha_inicio, new { htmlAttributes = new { @type = "date", @class = "form-control", @placeholder = "Fecha Inicio del Evento" } })
                 @Html.ValidationMessageFor(model => model.tbl_evento_fecha_inicio, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,8 +70,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.tbl_evento_fecha_fin, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_fecha_fin, new { htmlAttributes = new { @class = "form-control", @placeholder = "Fecha Finalizacion del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_fecha_fin, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_fecha_fin, new { htmlAttributes = new { @type = "date", @class = "form-control", @placeholder = "Fecha Finalizacion del Evento" } })
+                @Html.ValidationMessageFor(model => model.tbl_evento_fecha_fin, "", new {  @class = "text-danger" })
             </div>
         </div>
 

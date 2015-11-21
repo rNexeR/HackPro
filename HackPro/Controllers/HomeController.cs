@@ -108,17 +108,22 @@ namespace HackPro.Controllers
         }
 
         [HttpGet]
+        public ActionResult CrearEvento()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult CrearEvento(Evento even)
         {
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
                 var evento = new tbl_evento();
-
-                evento.tbl_usuario_id = even.tbl_cat_evento;
+                
                 evento.tbl_evento_duracion = even.tbl_evento_duracion;
                 evento.tbl_evento_precio = even.tbl_evento_precio;
-                evento.tbl_usuario_id = 1;
+                evento.tbl_usuario_id = 22;
                 evento.tbl_cat_evento_id = even.tbl_cat_evento;
                 evento.tbl_evento_activo = true;
                 evento.tbl_evento_cal_jurado = even.tbl_evento_cal_jurado;
@@ -131,7 +136,7 @@ namespace HackPro.Controllers
                 evento.tbl_evento_lugar_y = even.tbl_evento_lugar_y;
                 evento.tbl_evento_nombre = even.tbl_evento_nombre;
                 evento.tbl_evento_presupuesto = even.tbl_evento_presupuesto;
-                evento.tbl_evento_presupuesto = even.tbl_evento_presupuesto;
+                evento.tbl_evento_url = even.tbl_evento_url;
 
                 db.tbl_evento.Add(evento);
                 db.SaveChanges();
@@ -156,7 +161,7 @@ namespace HackPro.Controllers
                 equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
                 equipos.tbl_equipo_activo = true;
                 equipos.tbl_equipo_fecha_creacion = DateTime.Today;
-                equipos.tbl_equipo_usuario_admin = 1;
+                equipos.tbl_equipo_usuario_admin = 22;
 
                 db.tbl_equipo.Add(equipos);
                 db.SaveChanges();

@@ -4,52 +4,40 @@
 <script src="~/Content/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 @{
-    ViewBag.Title = "Usuarios";
+    ViewBag.Title = "Categorias de Eventos";
     Layout = "~/Views/Shared/_LoggedLayout.cshtml";
     //Layout = null;
 }
 
-    <!-- Main content -->
+<!-- Main content -->
 
-    <div class="box">
-        <div class="box-header">
-            
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
+<div class="box">
+    <div class="box-header">
+
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Username</th>
-                    <th>E-Mail</th>
-                    <th>Primer Nombre</th>
-                    <th>Primer Apellido</th>
-                    <th>Ocupacion</th>
-                    <th>Activo</th>
-                    <th>Administrador</th>
+                    <th>Descripcion</th>
                     <th>Opciones</th>
                 </tr>
-                </thead>
-                <tbody>
-                @Html.Raw(ViewBag.HtmlStr);
+            </thead>
+            <tbody>
+                @Html.Raw(ViewBag.HtmlStr)
 
-                </tbody>
-                <tfoot>
+            </tbody>
+            <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>Username</th>
-                    <th>E-Mail</th>
-                    <th>Primer Nombre</th>
-                    <th>Primer Apellido</th>
-                    <th>Ocupacion</th>
-                    <th>Activo</th>
-                    <th>Administrador</th>
+                    <th>Descripcion</th>
                     <th>Opciones</th>
                 </tr>
-                </tfoot>
-            </table>
+            </tfoot>
+        </table>
 
-            <script>
+        <script>
       $(function () {
         //$("#example1").DataTable();
         $('#example1').DataTable({
@@ -68,7 +56,7 @@
               window.location.href = "/Admin/DeleteUser?id="+id;
           }
       }
-      
+
                 function showPerfil(id) {
                     window.location.href = "/Home/Index";
                 }
@@ -76,11 +64,6 @@
                 function editPerfil(id) {
                     window.location.href = "/Home/Index";
                 }
-            </script>
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
-
-<!-- DataTables -->
-
-<!-- page script -->
-
+        </script>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->

@@ -30,27 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{
-                    string[] datos = ViewBag.list.Split(';');
-                    int ciclos = datos.Length/7;
-                    for (int n = 0; n < ciclos; n++)
-                    {
-                        <tr>
-                            @for (int x = 0; x < 7; x++)
-                            {
-                                <td>
-                                    @datos[n * 7 + x]
-                                </td>
-                            }
-                            <td>
-
-                                <button class="btn"><i class="fa fa-fw fa-pencil" onclick="editPerfil(@datos[n*8])"></i></button>
-                                <button class="btn"><i class="fa fa-fw fa-user" onclick="showPerfil(@datos[n*8])"></i></button>
-                                <button class="btn"><i class="fa fa-fw fa-trash" onclick="deleteuser(@datos[n*8])"></i></button>
-                            </td>
-                        </tr>
-                    }
-                }
+                @Html.Raw(ViewBag.HtmlStr);
 
             </tbody>
             <tfoot>
