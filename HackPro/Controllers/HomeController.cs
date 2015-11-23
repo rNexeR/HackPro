@@ -13,7 +13,12 @@ namespace HackPro.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+
+            System.Diagnostics.Debug.Write(Session["UserId"]);
+            if (Session["UserId"] != null)
+                return RedirectToAction("Index", "Admin");
+            else
+                return View();
         }
 
         public ActionResult Index2()
@@ -95,8 +100,8 @@ namespace HackPro.Controllers
                 var login = db.tbl_usuario.Where(p => p.tbl_usuario_correo.Equals(log.email)  && p.tbl_usuario_password.Equals(log.password));
                 if (login.Count() == 1)
                 {
-                    
-                    return View("Index");
+                    Session["UserId"] = login.First().tbl_usuario_id;
+                    return Index();
                 }
                 else
                 {
@@ -123,7 +128,7 @@ namespace HackPro.Controllers
                 
                 evento.tbl_evento_duracion = even.tbl_evento_duracion;
                 evento.tbl_evento_precio = even.tbl_evento_precio;
-                evento.tbl_usuario_id = 22;
+                evento.tbl_usuario_id = int.Parse(Session["ÜserId"].ToString());
                 evento.tbl_cat_evento_id = even.tbl_cat_evento;
                 evento.tbl_evento_activo = true;
                 evento.tbl_evento_cal_jurado = even.tbl_evento_cal_jurado;
@@ -161,7 +166,7 @@ namespace HackPro.Controllers
                 equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
                 equipos.tbl_equipo_activo = true;
                 equipos.tbl_equipo_fecha_creacion = DateTime.Today;
-                equipos.tbl_equipo_usuario_admin = 22;
+                equipos.tbl_equipo_usuario_admin = int.Parse(Session["ÜserId"].ToString());
 
                 db.tbl_equipo.Add(equipos);
                 db.SaveChanges();
