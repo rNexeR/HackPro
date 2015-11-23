@@ -108,6 +108,38 @@ public static class GravatarHtmlHelper {
         return new HtmlString(imgTag.ToString(TagRenderMode.SelfClosing));
     }
 
+    public static HtmlString GravatarImageModify(
+      this HtmlHelper htmlHelper,
+      string emailAddress,
+      int size = 80,
+      DefaultImage defaultImage = DefaultImage.Default,
+      string defaultImageUrl = "",
+      bool forceDefaultImage = false,
+      Rating rating = Rating.G,
+      bool forceSecureRequest = false)
+    {
+
+        var imgTag = new TagBuilder("img");
+
+        emailAddress = string.IsNullOrEmpty(emailAddress) ? string.Empty : emailAddress.Trim().ToLower();
+
+        imgTag.Attributes.Add("src",
+            string.Format("{0}://{1}.gravatar.com/avatar/{2}?s={3}{4}{5}{6}",
+                htmlHelper.ViewContext.HttpContext.Request.IsSecureConnection || forceSecureRequest ? "https" : "http",
+                htmlHelper.ViewContext.HttpContext.Request.IsSecureConnection || forceSecureRequest ? "secure" : "www",
+                GetMd5Hash(emailAddress),
+                size.ToString(),
+                "&d=" + (!string.IsNullOrEmpty(defaultImageUrl) ? HttpUtility.UrlEncode(defaultImageUrl) : defaultImage.GetDescription()),
+                forceDefaultImage ? "&f=y" : "",
+                "&r=" + rating.GetDescription()
+                )
+            );
+
+        imgTag.Attributes.Add("class", "img-circle");
+        imgTag.Attributes.Add("alt", "User Image");
+        return new HtmlString(imgTag.ToString(TagRenderMode.SelfClosing));
+    }
+
 
 
 
