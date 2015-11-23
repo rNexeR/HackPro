@@ -173,5 +173,32 @@ namespace HackPro.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public ActionResult CrearProyecto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CrearProyecto(Proyectos pro)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = new hackprodb_1Entities();
+                var project = new tbl_proyecto();
+
+                project.tbl_equipo_id = pro.tbl_equipo_id;
+                project.tbl_evento_id = pro.tbl_evento_id;
+                project.tbl_proyecto_activo = true;
+                project.tbl_proyecto_nombre = pro.tbl_proyecto_nombre;
+                project.tbl_proyecto_estatus = 0;
+                project.tbl_proyecto_git = pro.tbl_proyecto_git;
+
+                db.tbl_proyecto.Add(project);
+                db.SaveChanges();
+            }
+            return View();
+        }
     }
 }

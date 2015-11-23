@@ -304,5 +304,118 @@ namespace HackPro.Controllers
             @ViewBag.HtmlStr = lista;
             return View();
         }
+
+        public ActionResult ListarProyectos()
+        {
+            var lista = "";
+            var db = new hackprodb_1Entities();
+            var listado = db.tbl_proyecto.ToList();
+            foreach (var x in listado)
+            {
+                ///*
+                if (!x.tbl_proyecto_activo)
+                    continue;
+
+                lista += "<tr>";
+
+                lista += "<td>";
+                lista += x.tbl_proyecto_id;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += x.tbl_proyecto_nombre;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += db.tbl_equipo.Find(x.tbl_equipo_id).tbl_equipo_nombre;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += db.tbl_evento.Find(x.tbl_equipo_id).tbl_evento_desc;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += x.tbl_proyecto_git;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += x.tbl_proyecto_estatus;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
+                                    x.tbl_proyecto_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                                    x.tbl_proyecto_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                                    x.tbl_proyecto_id + ")\"></i></button>";
+                lista += "</td>";
+
+                lista += "</tr>";
+
+            }
+            @ViewBag.HtmlStr = lista;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CrearTipoAporte()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CrearTipoAporte(TipoAporte tp)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = new hackprodb_1Entities();
+                var tipo = new tbl_tipo_aporte();
+
+                tipo.tbl_tipo_aporte_desc = tp.tbl_tipo_aporte_desc;
+                tipo.tbl_tipo_aporte_activo = true;
+
+                db.tbl_tipo_aporte.Add(tipo);
+                db.SaveChanges();
+            }
+            return View();
+        }
+
+        public ActionResult ListarTIpoAporte()
+        {
+            var lista = "";
+            var db = new hackprodb_1Entities();
+            var listado = db.tbl_tipo_aporte.ToList();
+            foreach (var x in listado)
+            {
+                ///*
+                if (!x.tbl_tipo_aporte_activo)
+                    continue;
+
+                lista += "<tr>";
+
+                lista += "<td>";
+                lista += x.tbl_tipo_aporte_id;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += x.tbl_tipo_aporte_desc;
+                lista += "</td>";
+
+                lista += "<td>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
+                                    x.tbl_tipo_aporte_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                                    x.tbl_tipo_aporte_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                                    x.tbl_tipo_aporte_id + ")\"></i></button>";
+                lista += "</td>";
+
+                lista += "</tr>";
+
+            }
+            @ViewBag.HtmlStr = lista;
+            return View();
+        }
     }
 }

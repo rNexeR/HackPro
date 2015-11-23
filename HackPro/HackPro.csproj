@@ -1042,6 +1042,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Proyectos.cs" />
     <Compile Include="Models\tbl_calificacion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1084,6 +1085,7 @@
     <Compile Include="Models\tbl_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoAporte.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1107,6 +1109,10 @@
     <Content Include="Views\Home\CrearEquipo.cshtml" />
     <Content Include="Views\Admin\ListarEquipos.cshtml" />
     <Content Include="Views\Admin\ListarCatEventos.cshtml" />
+    <Content Include="Views\Home\CrearProyecto.cshtml" />
+    <Content Include="Views\Admin\ListarProyectos.cshtml" />
+    <Content Include="Views\Admin\CrearTipoAporte.cshtml" />
+    <Content Include="Views\Admin\ListarTipoAporte.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

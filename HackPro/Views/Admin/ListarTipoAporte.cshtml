@@ -1,0 +1,69 @@
+﻿<!-- DataTables -->
+<link rel="stylesheet" href="~/Content/plugins/datatables/dataTables.bootstrap.css">
+<script src="~/Content/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Content/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Tipos de Aportes";
+    Layout = "~/Views/Shared/_LoggedLayout.cshtml";
+    //Layout = null;
+}
+
+<!-- Main content -->
+
+<div class="box">
+    <div class="box-header">
+
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Descripcion</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.Raw(ViewBag.HtmlStr)
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Descripcion</th>
+                    <th>Opciones</th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <script>
+      $(function () {
+        //$("#example1").DataTable();
+        $('#example1').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+
+      function deleteuser(id) {
+          var status = confirm("Confirme eliminacion de Usuario con Id: " + id);
+          if (status === true) {
+              window.location.href = "/Admin/DeleteUser?id="+id;
+          }
+      }
+
+                function showPerfil(id) {
+                    window.location.href = "/Home/Index";
+                }
+
+                function editPerfil(id) {
+                    window.location.href = "/Home/Index";
+                }
+        </script>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
