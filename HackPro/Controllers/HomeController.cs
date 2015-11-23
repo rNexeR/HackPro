@@ -101,6 +101,8 @@ namespace HackPro.Controllers
                 if (login.Count() == 1)
                 {
                     Session["UserId"] = login.First().tbl_usuario_id;
+                    Session["Correo"] = log.email;
+                    Session["Username"] = login.First().tbl_usuario_username;
                     return Index();
                 }
                 else
