@@ -1025,6 +1025,7 @@
     <Compile Include="Models\Cat_Evento.cs" />
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\GravatarHtmlHelper.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
