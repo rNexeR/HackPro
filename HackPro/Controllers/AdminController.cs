@@ -13,7 +13,9 @@ namespace HackPro.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserId"] != null)
+                return View();
+            return RedirectToAction("Login", "Home");
         }
 
         public ActionResult ListarEventos()
@@ -127,6 +129,8 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteUser(int id)
         {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_usuario.Where(a => a.tbl_usuario_id == id);
             if (exist.Any())
@@ -143,6 +147,8 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteEvento(int id)
         {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_evento.Where(a => a.tbl_evento_id == id);
             if (exist.Any())
@@ -159,6 +165,8 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteEquipo(int id)
         {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_equipo.Where(a => a.tbl_equipo_id == id);
             if (exist.Any())
@@ -175,6 +183,8 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteCatEvento(int id)
         {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_cat_evento.Where(a => a.tbl_cat_evento_id == id);
             if (exist.Any())
@@ -191,12 +201,16 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult CrearCatEvento()
         {
+            if (Session["UserId"]==null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
             return View();
         }
 
         [HttpPost]
         public ActionResult CrearCatEvento(Cat_Evento categoria)
         {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
