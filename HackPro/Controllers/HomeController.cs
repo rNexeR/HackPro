@@ -11,6 +11,17 @@ namespace HackPro.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        public ActionResult LogOut()
+        {
+            Session["UserId"] = null;
+            Session["Name"] = null;
+            Session["Username"] = null;
+            Session["Correo"] = null;
+            Session["Ocupacion"] = null;
+            Session["Since"] = null;
+            return View("Login");
+        }
+
         public ActionResult Index()
         {
 
@@ -91,6 +102,48 @@ namespace HackPro.Controllers
             return View();
         }
 
+        public string getMonthInWords(int Month)
+        {
+            switch (Month)
+            {
+                case 1:
+                    return "Ene.";
+                    break;
+                case 2:
+                    return "Feb.";
+                    break;
+                case 3:
+                    return "Marzo";
+                    break;
+                case 4:
+                    return "Abril";
+                    break;
+                case 5:
+                    return "Mayo";
+                    break;
+                case 6:
+                    return "Junio";
+                    break;
+                case 7:
+                    return "Julio";
+                    break;
+                case 8:
+                    return "Ago.";
+                    break;
+                case 9:
+                    return "Seot.";
+                    break;
+                case 10:
+                    return "Oct.";
+                    break;
+                case 11:
+                    return "Nov.";
+                    break;
+                default:
+                    return "Dec.";
+            }
+        }
+
         [HttpPost]
         public ActionResult Login(Login log)
         {
@@ -101,8 +154,11 @@ namespace HackPro.Controllers
                 if (login.Count() == 1)
                 {
                     Session["UserId"] = login.First().tbl_usuario_id;
+                    Session["Name"] = login.First().tbl_usuario_p_nombre + " " + login.First().tbl_usuario_p_apellido;
                     Session["Correo"] = log.email;
                     Session["Username"] = login.First().tbl_usuario_username;
+                    Session["Ocupacion"] = login.First().tbl_usuario_ocupacion;
+                    Session["Since"] = getMonthInWords(login.First().tbl_usuario_fecha_crea.Month) + " " + login.First().tbl_usuario_fecha_crea.Year;
                     return Index();
                 }
                 else

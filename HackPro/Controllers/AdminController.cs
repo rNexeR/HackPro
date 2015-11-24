@@ -417,5 +417,37 @@ namespace HackPro.Controllers
             @ViewBag.HtmlStr = lista;
             return View();
         }
+
+        public ActionResult DeleteProyecto(int id)
+        {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
+            hackprodb_1Entities db = new hackprodb_1Entities();
+            var exist = db.tbl_proyecto.Where(a => a.tbl_proyecto_id == id);
+            if (exist.Any())
+            {
+                var mody = db.tbl_proyecto.Find(id);
+                mody.tbl_proyecto_activo = false;
+                db.Entry(mody).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return View("ListarProyectos");
+        }
+
+        public ActionResult DeleteTipoAporte(int id)
+        {
+            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+                return RedirectToAction("Login", "Home");
+            hackprodb_1Entities db = new hackprodb_1Entities();
+            var exist = db.tbl_tipo_aporte.Where(a => a.tbl_tipo_aporte_id == id);
+            if (exist.Any())
+            {
+                var mody = db.tbl_tipo_aporte.Find(id);
+                mody.tbl_tipo_aporte_activo = false;
+                db.Entry(mody).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return View("ListarProyectos");
+        }
     }
 }
