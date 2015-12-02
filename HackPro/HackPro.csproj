@@ -1113,6 +1113,8 @@
     <Content Include="Views\Admin\ListarProyectos.cshtml" />
     <Content Include="Views\Admin\CrearTipoAporte.cshtml" />
     <Content Include="Views\Admin\ListarTipoAporte.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Admin\Error404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,6 +11,26 @@ namespace HackPro.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        [HttpGet]
+        public ActionResult Error404()
+        {
+            ViewBag.Title = "User not found";
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Profile(int id)
+        {
+            var db = new hackprodb_1Entities();
+            var exist = db.tbl_usuario.Find(id);
+            if (exist != null)
+            {
+
+                return View();
+            }
+            return View("Error404");
+        }
+
         public ActionResult Index()
         {
             if (Session["UserId"] != null)
