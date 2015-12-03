@@ -228,7 +228,7 @@
                         <a href="#">@Session["Username"].ToString()</a>
                     </div>
                 </div>
-                <!-- search form -->
+                <!-- search form 
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -236,7 +236,7 @@
                             <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
                         </span>
                     </div>
-                </form>
+                </form> -->
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
@@ -247,63 +247,57 @@
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-users"></i> <span>Usuarios</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                        <a href="/Admin/Index">
+                            <i class="fa fa-dashboard"></i> <span>Proximos Eventos</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/Usuarios"><i class="fa fa-circle-o"></i>Listar</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-calendar"></i> <span>Eventos</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                        <a href="/Admin/Index">
+                            <i class="fa fa-dashboard"></i> <span>Eventos</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/CrearEvento"><i class="fa fa-circle-o"></i>Crear</a></li>
-                            <li><a href="/Admin/ListarEventos"><i class="fa fa-circle-o"></i>Listar</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-share-alt-square"></i> <span>Equipos</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                        <a href="/Admin/Index">
+                            <i class="fa fa-dashboard"></i> <span>Usuarios</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/CrearEquipo"><i class="fa fa-circle-o"></i>Crear</a></li>
-                            <li><a href="/Admin/ListarEquipos"><i class="fa fa-circle-o"></i>Listar</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-tags"></i> <span>Categorias de Eventos</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                        <a href="/Admin/Index">
+                            <i class="fa fa-dashboard"></i> <span>Proyectos</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/CrearCatEvento"><i class="fa fa-circle-o"></i>Crear</a></li>
-                            <li><a href="/Admin/ListarCatEventos"><i class="fa fa-circle-o"></i>Listar</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-github"></i> <span>Proyectos</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                        <a href="/Admin/Index">
+                            <i class="fa fa-dashboard"></i> <span>Equipos</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/CrearProyecto"><i class="fa fa-circle-o"></i>Crear</a></li>
-                            <li><a href="/Admin/ListarProyectos"><i class="fa fa-circle-o"></i>Listar</a></li>
-                        </ul>
                     </li>
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-money"></i> <span>TipoAporte</span>
-                            <i class="fa fa-angle-left pull-right"></i>
+                        <a href="/Admin/Index">
+                            <i class="fa fa-dashboard"></i> <span>Patrocinios</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/CrearTipoAporte"><i class="fa fa-circle-o"></i>Crear</a></li>
-                            <li><a href="/Admin/ListarTipoAporte"><i class="fa fa-circle-o"></i>Listar</a></li>
-                        </ul>
+                    </li>
+                </ul>
+                <ul class="sidebar-menu">
+                    <li class="header">ADMIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="/Admin/Index">
+                            <i class="fa fa-calendar"></i> <span>Mis Eventos</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="/Admin/Index">
+                            <i class="fa fa-github"></i> <span>Mis Proyectos</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="/Admin/Index">
+                            <i class="fa fa-share-alt-square"></i> <span>Mis Equipos</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="/Admin/Index">
+                            <i class="fa fa-money"></i> <span>Mis Patrocinios</span>
+                        </a>
                     </li>
                 </ul>
             </section>
@@ -322,7 +316,10 @@
 
             <!-- Main content -->
             <section class="content">
-                @RenderBody()
+                <div class="box box-primary">
+                    <hr />
+                    @RenderBody()
+                </div>
             </section><!-- /.content -->
         </div><!-- /.content-wrapper -->
 

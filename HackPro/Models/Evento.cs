@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HackPro.Models
 {
@@ -44,6 +45,8 @@ namespace HackPro.Models
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Categoria")]
         public int tbl_cat_evento { get; set; }
+        public IEnumerable<SelectListItem> cat_evento { get; set; }
+        
 
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Presupuesto")]

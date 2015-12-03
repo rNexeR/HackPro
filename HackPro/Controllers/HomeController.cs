@@ -61,6 +61,7 @@ namespace HackPro.Controllers
             Session["Correo"] = null;
             Session["Ocupacion"] = null;
             Session["Since"] = null;
+            Session["Admin"] = null;
             return RedirectToAction("Login", "Home");
         }
 
@@ -152,6 +153,9 @@ namespace HackPro.Controllers
                     Session["Username"] = login.First().tbl_usuario_username;
                     Session["Ocupacion"] = login.First().tbl_usuario_ocupacion;
                     Session["Since"] = getMonthInWords(login.First().tbl_usuario_fecha_crea.Month) + " " + login.First().tbl_usuario_fecha_crea.Year;
+                    Session["Admin"] = login.First().tbl_usuario_admin;
+                    if(login.First().tbl_usuario_admin)
+                        return RedirectToAction("Index", "Admin");
                     return RedirectToAction("Index", "Logged");
                 }
                 else
@@ -162,5 +166,6 @@ namespace HackPro.Controllers
                      
             return View();            
         }
+        
     }
 }

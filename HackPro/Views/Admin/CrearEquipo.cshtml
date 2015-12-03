@@ -1,18 +1,14 @@
 ﻿@model HackPro.Models.Equipo
 
 @{
-    ViewBag.Title = "CrearEquipo";
+    ViewBag.Title = "Crear Equipo";
 }
-
-<h2>CrearEquipo</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Equipo</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.tbl_equipo_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -30,6 +26,3 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -28,7 +28,7 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult Profile(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
             var db = new hackprodb_1Entities();
             var exist = db.tbl_usuario.Find(id);
@@ -42,7 +42,7 @@ namespace HackPro.Controllers
 
         public ActionResult Index()
         {
-            if (Session["UserId"] != null)
+            if (Session["UserId"] != null || Session["Admin"].Equals(true))
                 return View();
             return RedirectToAction("Login", "Home");
         }
@@ -149,6 +149,8 @@ namespace HackPro.Controllers
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
                                     x.tbl_usuario_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                                    x.tbl_usuario_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-black-tie\" onclick=\"makeAdmin(" +
                                     x.tbl_usuario_id + ")\"></i></button>";
                 lista += "</td>";
 
@@ -493,6 +495,128 @@ namespace HackPro.Controllers
                 db.SaveChanges();
             }
             return View("ListarProyectos");
+        }
+
+        [HttpGet]
+        public ActionResult CrearEvento()
+        {
+            var model = new Evento();
+            var db = new hackprodb_1Entities();
+            model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
+            {
+                Value = x.tbl_cat_evento_id.ToString(),
+                Text = x.tbl_cat_evento_desc
+            });
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CrearEvento(Evento even)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            if (ModelState.IsValid)
+            {
+                var db = new hackprodb_1Entities();
+                var evento = new tbl_evento();
+
+                evento.tbl_evento_duracion = even.tbl_evento_duracion;
+                evento.tbl_evento_precio = even.tbl_evento_precio;
+                int id = int.Parse(Session["ÜserId"].ToString());
+                evento.tbl_usuario_id = 22;
+                evento.tbl_cat_evento_id = even.tbl_cat_evento;
+                evento.tbl_evento_activo = true;
+                evento.tbl_evento_cal_jurado = even.tbl_evento_cal_jurado;
+                evento.tbl_evento_cal_pueblo = even.tbl_evento_cal_pueblo;
+                evento.tbl_evento_desc = even.tbl_evento_desc;
+                evento.tbl_evento_fecha_fin = even.tbl_evento_fecha_fin;
+                evento.tbl_evento_fecha_inicio = even.tbl_evento_fecha_inicio;
+                evento.tbl_evento_lugar = even.tbl_evento_lugar;
+                evento.tbl_evento_lugar_x = even.tbl_evento_lugar_x;
+                evento.tbl_evento_lugar_y = even.tbl_evento_lugar_y;
+                evento.tbl_evento_nombre = even.tbl_evento_nombre;
+                evento.tbl_evento_presupuesto = even.tbl_evento_presupuesto;
+                evento.tbl_evento_url = even.tbl_evento_url;
+
+                db.tbl_evento.Add(evento);
+                db.SaveChanges();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CrearEquipo()
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CrearEquipo(Equipo equipo)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            if (ModelState.IsValid)
+            {
+                var db = new hackprodb_1Entities();
+                var equipos = new tbl_equipo();
+
+                equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
+                equipos.tbl_equipo_activo = true;
+                equipos.tbl_equipo_fecha_creacion = DateTime.Today;
+                equipos.tbl_equipo_usuario_admin = int.Parse(Session["ÜserId"].ToString());
+
+                db.tbl_equipo.Add(equipos);
+                db.SaveChanges();
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CrearProyecto()
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+
+            var model = new Proyectos();
+            var db = new hackprodb_1Entities();
+            model.eventos = db.tbl_evento.ToList().Select(x => new SelectListItem
+            {
+                Value = x.tbl_evento_id.ToString(),
+                Text = x.tbl_evento_nombre
+            });
+
+            model.equipos = db.tbl_equipo.ToList().Select(x => new SelectListItem
+            {
+                Value = x.tbl_equipo_id.ToString(),
+                Text = x.tbl_equipo_nombre
+            });
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CrearProyecto(Proyectos pro)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            if (ModelState.IsValid)
+            {
+                var db = new hackprodb_1Entities();
+                var project = new tbl_proyecto();
+
+                project.tbl_equipo_id = pro.tbl_equipo_id;
+                project.tbl_evento_id = pro.tbl_evento_id;
+                project.tbl_proyecto_activo = true;
+                project.tbl_proyecto_nombre = pro.tbl_proyecto_nombre;
+                project.tbl_proyecto_estatus = 0;
+                project.tbl_proyecto_git = pro.tbl_proyecto_git;
+
+                db.tbl_proyecto.Add(project);
+                db.SaveChanges();
+            }
+            return View();
         }
     }
 }
