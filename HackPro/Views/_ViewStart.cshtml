@@ -1,12 +1,12 @@
 ﻿@{
-    //if(Session["UserId"] == null) {
+    if(Session["UserId"] == null) {
         Layout = "~/Views/Shared/_Layout.cshtml";
-    //}else if (Session["Username"].ToString() == "rnexer" || Session["Username"].ToString() == "raimmaster")
-    /*{
-        Layout = "~/Views/Shared/_LoggedLayout.cshtml";
+    }else if (Session["Username"].ToString().Equals("rnexer") || Session["Username"].ToString().Equals("raimmaster"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
     else
     {
         Layout = "~/Views/Shared/_LoggedLayout.cshtml";
-    }*/
+    }
 }

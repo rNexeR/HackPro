@@ -10,6 +10,48 @@ namespace HackPro.Controllers
 {
     public class HomeController : Controller
     {
+        public string getMonthInWords(int Month)
+        {
+            switch (Month)
+            {
+                case 1:
+                    return "Ene.";
+                    break;
+                case 2:
+                    return "Feb.";
+                    break;
+                case 3:
+                    return "Marzo";
+                    break;
+                case 4:
+                    return "Abril";
+                    break;
+                case 5:
+                    return "Mayo";
+                    break;
+                case 6:
+                    return "Junio";
+                    break;
+                case 7:
+                    return "Julio";
+                    break;
+                case 8:
+                    return "Ago.";
+                    break;
+                case 9:
+                    return "Seot.";
+                    break;
+                case 10:
+                    return "Oct.";
+                    break;
+                case 11:
+                    return "Nov.";
+                    break;
+                default:
+                    return "Dec.";
+            }
+        }
+
         // GET: Home
         public ActionResult LogOut()
         {
@@ -19,22 +61,15 @@ namespace HackPro.Controllers
             Session["Correo"] = null;
             Session["Ocupacion"] = null;
             Session["Since"] = null;
-            return View("Login");
+            return RedirectToAction("Login", "Home");
         }
 
         public ActionResult Index()
         {
-
-            System.Diagnostics.Debug.Write(Session["UserId"]);
             if (Session["UserId"] != null)
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index", "Logged");
             else
                 return View();
-        }
-
-        public ActionResult Index2()
-        {
-            return View();
         }
 
         public ActionResult Register()
@@ -91,7 +126,7 @@ namespace HackPro.Controllers
                             usuario.tbl_usuario_admin = false;
                             db.tbl_usuario.Add(usuario);
                             db.SaveChanges();
-                            return View("Login");
+                            return RedirectToAction("Login", "Home");
                         }
                     }
                     
@@ -100,48 +135,6 @@ namespace HackPro.Controllers
                 
             }
             return View();
-        }
-
-        public string getMonthInWords(int Month)
-        {
-            switch (Month)
-            {
-                case 1:
-                    return "Ene.";
-                    break;
-                case 2:
-                    return "Feb.";
-                    break;
-                case 3:
-                    return "Marzo";
-                    break;
-                case 4:
-                    return "Abril";
-                    break;
-                case 5:
-                    return "Mayo";
-                    break;
-                case 6:
-                    return "Junio";
-                    break;
-                case 7:
-                    return "Julio";
-                    break;
-                case 8:
-                    return "Ago.";
-                    break;
-                case 9:
-                    return "Seot.";
-                    break;
-                case 10:
-                    return "Oct.";
-                    break;
-                case 11:
-                    return "Nov.";
-                    break;
-                default:
-                    return "Dec.";
-            }
         }
 
         [HttpPost]
@@ -159,7 +152,7 @@ namespace HackPro.Controllers
                     Session["Username"] = login.First().tbl_usuario_username;
                     Session["Ocupacion"] = login.First().tbl_usuario_ocupacion;
                     Session["Since"] = getMonthInWords(login.First().tbl_usuario_fecha_crea.Month) + " " + login.First().tbl_usuario_fecha_crea.Year;
-                    return Index();
+                    return RedirectToAction("Index", "Logged");
                 }
                 else
                 {
@@ -168,95 +161,6 @@ namespace HackPro.Controllers
             }
                      
             return View();            
-        }
-
-        [HttpGet]
-        public ActionResult CrearEvento()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CrearEvento(Evento even)
-        {
-            if (ModelState.IsValid)
-            {
-                var db = new hackprodb_1Entities();
-                var evento = new tbl_evento();
-                
-                evento.tbl_evento_duracion = even.tbl_evento_duracion;
-                evento.tbl_evento_precio = even.tbl_evento_precio;
-                evento.tbl_usuario_id = int.Parse(Session["ÜserId"].ToString());
-                evento.tbl_cat_evento_id = even.tbl_cat_evento;
-                evento.tbl_evento_activo = true;
-                evento.tbl_evento_cal_jurado = even.tbl_evento_cal_jurado;
-                evento.tbl_evento_cal_pueblo = even.tbl_evento_cal_pueblo;
-                evento.tbl_evento_desc = even.tbl_evento_desc;
-                evento.tbl_evento_fecha_fin = even.tbl_evento_fecha_fin;
-                evento.tbl_evento_fecha_inicio = even.tbl_evento_fecha_inicio;
-                evento.tbl_evento_lugar = even.tbl_evento_lugar;
-                evento.tbl_evento_lugar_x = even.tbl_evento_lugar_x;
-                evento.tbl_evento_lugar_y = even.tbl_evento_lugar_y;
-                evento.tbl_evento_nombre = even.tbl_evento_nombre;
-                evento.tbl_evento_presupuesto = even.tbl_evento_presupuesto;
-                evento.tbl_evento_url = even.tbl_evento_url;
-
-                db.tbl_evento.Add(evento);
-                db.SaveChanges();
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult CrearEquipo()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CrearEquipo(Equipo equipo)
-        {
-            if (ModelState.IsValid)
-            {
-                var db = new hackprodb_1Entities();
-                var equipos = new tbl_equipo();
-
-                equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
-                equipos.tbl_equipo_activo = true;
-                equipos.tbl_equipo_fecha_creacion = DateTime.Today;
-                equipos.tbl_equipo_usuario_admin = int.Parse(Session["ÜserId"].ToString());
-
-                db.tbl_equipo.Add(equipos);
-                db.SaveChanges();
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult CrearProyecto()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CrearProyecto(Proyectos pro)
-        {
-            if (ModelState.IsValid)
-            {
-                var db = new hackprodb_1Entities();
-                var project = new tbl_proyecto();
-
-                project.tbl_equipo_id = pro.tbl_equipo_id;
-                project.tbl_evento_id = pro.tbl_evento_id;
-                project.tbl_proyecto_activo = true;
-                project.tbl_proyecto_nombre = pro.tbl_proyecto_nombre;
-                project.tbl_proyecto_estatus = 0;
-                project.tbl_proyecto_git = pro.tbl_proyecto_git;
-
-                db.tbl_proyecto.Add(project);
-                db.SaveChanges();
-            }
-            return View();
         }
     }
 }
