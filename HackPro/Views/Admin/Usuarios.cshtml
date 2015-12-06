@@ -5,7 +5,6 @@
 
 @{
     ViewBag.Title = "Usuarios";
-    Layout = "~/Views/Shared/_LoggedLayout.cshtml";
     //Layout = null;
 }
 
@@ -31,7 +30,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @Html.Raw(ViewBag.HtmlStr);
+                @Html.Raw(ViewBag.HtmlStr)
 
                 </tbody>
                 <tfoot>
@@ -74,7 +73,7 @@
                 }
 
                 function editPerfil(id) {
-                    window.location.href = "/Home/Index";
+                    window.location.href = "/Admin/EditarUsuario?id="+id;
                 }
             </script>
         </div><!-- /.box-body -->

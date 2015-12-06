@@ -1019,6 +1019,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoggedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1099,22 +1100,30 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Shared\_LoggedLayout.cshtml" />
-    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Usuarios.cshtml" />
-    <Content Include="Views\Home\CrearEvento.cshtml" />
+    <Content Include="Views\Admin\CrearEvento.cshtml" />
     <Content Include="Views\Admin\ListarEventos.cshtml" />
     <Content Include="Views\Admin\CrearCatEvento.cshtml" />
-    <Content Include="Views\Home\CrearEquipo.cshtml" />
+    <Content Include="Views\Admin\CrearEquipo.cshtml" />
     <Content Include="Views\Admin\ListarEquipos.cshtml" />
     <Content Include="Views\Admin\ListarCatEventos.cshtml" />
-    <Content Include="Views\Home\CrearProyecto.cshtml" />
+    <Content Include="Views\Admin\CrearProyecto.cshtml" />
     <Content Include="Views\Admin\ListarProyectos.cshtml" />
     <Content Include="Views\Admin\CrearTipoAporte.cshtml" />
     <Content Include="Views\Admin\ListarTipoAporte.cshtml" />
     <Content Include="Views\Admin\Profile.cshtml" />
     <Content Include="Views\Admin\Error404.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Logged\Index.cshtml" />
+    <Content Include="Views\Admin\PermissionError.cshtml" />
+    <Content Include="Views\Logged\ProximosEventos.cshtml" />
+    <Content Include="Views\Logged\Eventos.cshtml" />
+    <Content Include="Views\Logged\Proyectos.cshtml" />
+    <Content Include="Views\Logged\Patrocinios.cshtml" />
+    <Content Include="Views\Admin\EditarUsuario.cshtml" />
+    <None Include="Views\Logged\Equipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
