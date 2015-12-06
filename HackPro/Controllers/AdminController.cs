@@ -42,15 +42,20 @@ namespace HackPro.Controllers
 
         public ActionResult Index()
         {
-            if (Session["UserId"] != null || Session["Admin"].Equals(true))
-                return View();
-            return RedirectToAction("Login", "Home");
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
+            return View();
+            
         }
 
         public ActionResult ListarEventos()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_evento.ToList();
@@ -107,8 +112,10 @@ namespace HackPro.Controllers
 
         public ActionResult Usuarios()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_usuario.ToList();
@@ -164,8 +171,10 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteUser(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_usuario.Where(a => a.tbl_usuario_id == id);
             if (exist.Any())
@@ -175,15 +184,17 @@ namespace HackPro.Controllers
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return View("Usuarios");
+            return RedirectToAction("Usuarios", "Admin");
 
         }
 
         [HttpGet]
         public ActionResult DeleteEvento(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_evento.Where(a => a.tbl_evento_id == id);
             if (exist.Any())
@@ -200,8 +211,10 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteEquipo(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_equipo.Where(a => a.tbl_equipo_id == id);
             if (exist.Any())
@@ -218,8 +231,10 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult DeleteCatEvento(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_cat_evento.Where(a => a.tbl_cat_evento_id == id);
             if (exist.Any())
@@ -236,16 +251,20 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult CrearCatEvento()
         {
-            if (Session["UserId"]==null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             return View();
         }
 
         [HttpPost]
         public ActionResult CrearCatEvento(Cat_Evento categoria)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
@@ -263,8 +282,10 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult ListarEquipos()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if(Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_equipo.ToList();
@@ -307,8 +328,10 @@ namespace HackPro.Controllers
 
         public ActionResult ListarCatEventos()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_cat_evento.ToList();
@@ -346,8 +369,10 @@ namespace HackPro.Controllers
 
         public ActionResult ListarProyectos()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_proyecto.ToList();
@@ -402,16 +427,20 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult CrearTipoAporte()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             return View();
         }
 
         [HttpPost]
         public ActionResult CrearTipoAporte(TipoAporte tp)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
@@ -428,8 +457,10 @@ namespace HackPro.Controllers
 
         public ActionResult ListarTIpoAporte()
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_tipo_aporte.ToList();
@@ -467,8 +498,10 @@ namespace HackPro.Controllers
 
         public ActionResult DeleteProyecto(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_proyecto.Where(a => a.tbl_proyecto_id == id);
             if (exist.Any())
@@ -483,8 +516,10 @@ namespace HackPro.Controllers
 
         public ActionResult DeleteTipoAporte(int id)
         {
-            if (Session["UserId"] == null || int.Parse(Session["UserId"].ToString()) != 22)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             hackprodb_1Entities db = new hackprodb_1Entities();
             var exist = db.tbl_tipo_aporte.Where(a => a.tbl_tipo_aporte_id == id);
             if (exist.Any())
@@ -500,6 +535,10 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult CrearEvento()
         {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             var model = new Evento();
             var db = new hackprodb_1Entities();
             model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
@@ -515,6 +554,8 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
@@ -522,8 +563,8 @@ namespace HackPro.Controllers
 
                 evento.tbl_evento_duracion = even.tbl_evento_duracion;
                 evento.tbl_evento_precio = even.tbl_evento_precio;
-                int id = int.Parse(Session["ÜserId"].ToString());
-                evento.tbl_usuario_id = 22;
+                //int id = int.Parse(Session["ÜserId"].ToString());
+                evento.tbl_usuario_id = 22;//hardcoded por ahora
                 evento.tbl_cat_evento_id = even.tbl_cat_evento;
                 evento.tbl_evento_activo = true;
                 evento.tbl_evento_cal_jurado = even.tbl_evento_cal_jurado;
@@ -541,7 +582,7 @@ namespace HackPro.Controllers
                 db.tbl_evento.Add(evento);
                 db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("CrearEvento");
         }
 
         [HttpGet]
@@ -549,6 +590,8 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             return View();
         }
 
@@ -557,6 +600,8 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
@@ -578,6 +623,8 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
 
             var model = new Proyectos();
             var db = new hackprodb_1Entities();
@@ -601,6 +648,8 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
             if (ModelState.IsValid)
             {
                 var db = new hackprodb_1Entities();
@@ -617,6 +666,34 @@ namespace HackPro.Controllers
                 db.SaveChanges();
             }
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult EditarUsuario(int id)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
+
+            var model = new Usuarios();
+            var db = new hackprodb_1Entities();
+
+            var user = db.tbl_usuario.Find(id);
+
+            model.celular = user.tbl_usuario_celular;
+            model.correo = user.tbl_usuario_correo;
+            model.fecha_nac = user.tbl_usuario_fecha_nac;
+            model.genero = user.tbl_usuario_genero;
+            model.id = user.tbl_usuario_id;
+            model.ocupacion = user.tbl_usuario_ocupacion;
+            model.p_apellido = user.tbl_usuario_p_apellido;
+            model.s_apellido = user.tbl_usuario_s_apellido;
+            model.p_nombre = user.tbl_usuario_p_nombre;
+            model.s_nombre = user.tbl_usuario_s_nombre;
+            model.username = user.tbl_usuario_username;
+
+            return View(model);
         }
     }
 }
