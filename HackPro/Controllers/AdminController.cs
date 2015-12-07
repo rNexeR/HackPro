@@ -14,7 +14,7 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult Error404()
         {
-            ViewBag.Title = "Usuario no encontrado";
+            ViewBag.Title = "Pagina no encontrada";
             return View();
         }
 
@@ -96,12 +96,12 @@ namespace HackPro.Controllers
 
                 lista += "<td>";
 
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
-                                    x.tbl_usuario_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
-                                    x.tbl_usuario_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
-                                    x.tbl_usuario_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
+                                    x.tbl_evento_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
+                                    x.tbl_evento_id + ")\"></i></button>";
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
+                                    x.tbl_evento_id + ")\"></i></button>";
                 lista += "</td>";
 
                 lista += "</tr>";
@@ -204,7 +204,7 @@ namespace HackPro.Controllers
                 db.Entry(mody).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return View("ListarEventos");
+            return RedirectToAction("ListarEventos");
 
         }
 
@@ -224,7 +224,7 @@ namespace HackPro.Controllers
                 db.Entry(mody).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return View("ListarEquipos");
+            return RedirectToAction("ListarEquipos");
 
         }
 
@@ -244,7 +244,7 @@ namespace HackPro.Controllers
                 db.Entry(mody).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return View("ListarCatEventos");
+            return RedirectToAction("ListarCatEventos");
 
         }
 
@@ -311,11 +311,11 @@ namespace HackPro.Controllers
 
                 lista += "<td>";
 
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_equipo_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
                                     x.tbl_equipo_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_equipo_id + ")\"></i></button>";
                 lista += "</td>";
 
@@ -352,11 +352,11 @@ namespace HackPro.Controllers
                 lista += "</td>";
 
                 lista += "<td>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_cat_evento_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
                                     x.tbl_cat_evento_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_cat_evento_id + ")\"></i></button>";
                 lista += "</td>";
 
@@ -409,11 +409,11 @@ namespace HackPro.Controllers
                 lista += "</td>";
 
                 lista += "<td>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_proyecto_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
                                     x.tbl_proyecto_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_proyecto_id + ")\"></i></button>";
                 lista += "</td>";
 
@@ -481,11 +481,11 @@ namespace HackPro.Controllers
                 lista += "</td>";
 
                 lista += "<td>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_tipo_aporte_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
                                     x.tbl_tipo_aporte_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_tipo_aporte_id + ")\"></i></button>";
                 lista += "</td>";
 
@@ -511,7 +511,7 @@ namespace HackPro.Controllers
                 db.Entry(mody).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return View("ListarProyectos");
+            return RedirectToAction("ListarProyectos");
         }
 
         public ActionResult DeleteTipoAporte(int id)
@@ -529,7 +529,7 @@ namespace HackPro.Controllers
                 db.Entry(mody).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return View("ListarProyectos");
+            return RedirectToAction("ListarProyectos");
         }
 
         [HttpGet]
@@ -563,8 +563,7 @@ namespace HackPro.Controllers
 
                 evento.tbl_evento_duracion = even.tbl_evento_duracion;
                 evento.tbl_evento_precio = even.tbl_evento_precio;
-                //int id = int.Parse(Session["ÜserId"].ToString());
-                evento.tbl_usuario_id = 22;//hardcoded por ahora
+                evento.tbl_usuario_id = int.Parse(Session["UserId"].ToString());
                 evento.tbl_cat_evento_id = even.tbl_cat_evento;
                 evento.tbl_evento_activo = true;
                 evento.tbl_evento_cal_jurado = even.tbl_evento_cal_jurado;
@@ -610,12 +609,12 @@ namespace HackPro.Controllers
                 equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
                 equipos.tbl_equipo_activo = true;
                 equipos.tbl_equipo_fecha_creacion = DateTime.Today;
-                equipos.tbl_equipo_usuario_admin = int.Parse(Session["ÜserId"].ToString());
+                equipos.tbl_equipo_usuario_admin = int.Parse(Session["UserId"].ToString());
 
                 db.tbl_equipo.Add(equipos);
                 db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("CrearEvento");
         }
 
         [HttpGet]
@@ -673,7 +672,7 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
-            else if (Session["Admin"].Equals(false))
+            else if (Session["Admin"].Equals(false) && int.Parse(Session["UserId"].ToString()) != id)
                 return RedirectToAction("PermissionError");
 
             var model = new Usuarios();
@@ -683,7 +682,7 @@ namespace HackPro.Controllers
 
             model.celular = user.tbl_usuario_celular;
             model.correo = user.tbl_usuario_correo;
-            model.fecha_nac = user.tbl_usuario_fecha_nac;
+            model.fecha_nac = (DateTime)user.tbl_usuario_fecha_nac;
             model.genero = user.tbl_usuario_genero;
             model.id = user.tbl_usuario_id;
             model.ocupacion = user.tbl_usuario_ocupacion;
@@ -692,6 +691,132 @@ namespace HackPro.Controllers
             model.p_nombre = user.tbl_usuario_p_nombre;
             model.s_nombre = user.tbl_usuario_s_nombre;
             model.username = user.tbl_usuario_username;
+            model.admin = user.tbl_usuario_admin;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditarUsuario(Usuarios user)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false) && int.Parse(Session["UserId"].ToString()) != user.id)
+                return RedirectToAction("PermissionError");
+            hackprodb_1Entities db = new hackprodb_1Entities();
+            var userActual = db.tbl_usuario.Find(user.id);
+            if (userActual != null)
+            {
+                userActual.tbl_usuario_activo = true;
+                userActual.tbl_usuario_admin = user.admin;
+                userActual.tbl_usuario_fecha_nac = user.fecha_nac;
+                userActual.tbl_usuario_genero = user.genero;
+                userActual.tbl_usuario_ocupacion = user.ocupacion;
+                userActual.tbl_usuario_p_apellido = user.p_apellido;
+                userActual.tbl_usuario_s_apellido = user.s_apellido;
+                userActual.tbl_usuario_p_nombre = user.p_nombre;
+                userActual.tbl_usuario_s_nombre = user.s_nombre;
+                userActual.tbl_usuario_username = user.username;
+                userActual.tbl_usuario_correo = user.correo;
+
+                db.Entry(userActual).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Usuarios", "Admin");
+        }
+
+        [HttpGet]
+        public ActionResult EditarEvento(int id)
+        {
+
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            var model = new Evento();
+            var db = new hackprodb_1Entities();
+
+            var ev = db.tbl_evento.Find(id);
+            if (ev == null)
+                return RedirectPermanent("Error404");
+            else if (Session["Admin"].Equals(false) && ev.tbl_usuario_id != int.Parse(Session["UserId"].ToString()))
+                return RedirectToAction("PermissionError");
+
+            model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
+            {
+                Value = x.tbl_cat_evento_id.ToString(),
+                Text = x.tbl_cat_evento_desc
+            });
+
+            model.id = ev.tbl_evento_id;
+            model.tbl_cat_evento = ev.tbl_cat_evento_id;
+            model.tbl_evento_cal_jurado = ev.tbl_evento_cal_jurado;
+            model.tbl_evento_cal_pueblo = ev.tbl_evento_cal_pueblo;
+            model.tbl_evento_desc = ev.tbl_evento_desc;
+            model.tbl_evento_duracion = ev.tbl_evento_duracion;
+            model.tbl_evento_fecha_fin = ev.tbl_evento_fecha_fin;
+            model.tbl_evento_fecha_inicio = ev.tbl_evento_fecha_inicio;
+            model.tbl_evento_lugar = ev.tbl_evento_lugar;
+            model.tbl_evento_lugar_x = ev.tbl_evento_lugar_x;
+            model.tbl_evento_lugar_y = ev.tbl_evento_lugar_y;
+            model.tbl_evento_nombre = ev.tbl_evento_nombre;
+            model.tbl_evento_precio = ev.tbl_evento_precio;
+            model.tbl_evento_presupuesto = ev.tbl_evento_presupuesto;
+            model.tbl_evento_url = ev.tbl_evento_url;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditarEvento(Evento evento)
+        {
+
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+
+            var db = new hackprodb_1Entities();
+
+            var ev = db.tbl_evento.Find(evento.id);
+            if (ev == null)
+                return RedirectPermanent("Error404");
+            else if (Session["Admin"].Equals(false) && ev.tbl_usuario_id != int.Parse(Session["UserId"].ToString()))
+                return RedirectToAction("PermissionError");
+
+            ev.tbl_cat_evento_id = evento.tbl_cat_evento;
+            ev.tbl_evento_cal_jurado = evento.tbl_evento_cal_jurado;
+            ev.tbl_evento_cal_pueblo = evento.tbl_evento_cal_pueblo;
+            ev.tbl_evento_desc = evento.tbl_evento_desc;
+            ev.tbl_evento_duracion = evento.tbl_evento_duracion;
+            ev.tbl_evento_fecha_fin = evento.tbl_evento_fecha_fin;
+            ev.tbl_evento_fecha_inicio = evento.tbl_evento_fecha_inicio;
+            ev.tbl_evento_lugar = evento.tbl_evento_lugar;
+            ev.tbl_evento_lugar_x = evento.tbl_evento_lugar_x;
+            ev.tbl_evento_lugar_y = evento.tbl_evento_lugar_y;
+            ev.tbl_evento_nombre = evento.tbl_evento_nombre;
+            ev.tbl_evento_precio = evento.tbl_evento_precio;
+            ev.tbl_evento_presupuesto = evento.tbl_evento_presupuesto;
+            ev.tbl_evento_url = evento.tbl_evento_url;
+
+            db.Entry(ev).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("ListarEventos");
+        }
+
+        [HttpGet]
+        public ActionResult EditarEquipo(int id)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            var model = new Equipo();
+            var db = new hackprodb_1Entities();
+
+            var equipo = db.tbl_equipo.Find(id);
+            if (equipo == null)
+                return RedirectPermanent("Error404");
+            else if (Session["Admin"].Equals(false) && equipo.tbl_equipo_usuario_admin != int.Parse(Session["UserId"].ToString()))
+                return RedirectToAction("PermissionError");
+
+            model.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
+            model.id = equipo.tbl_equipo_id;
 
             return View(model);
         }

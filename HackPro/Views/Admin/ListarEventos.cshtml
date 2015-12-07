@@ -59,19 +59,19 @@
         });
       });
 
-      function deleteuser(id) {
-          var status = confirm("Confirme eliminacion de Usuario con Id: " + id);
+      function eliminar(id) {
+          var status = confirm("Confirme eliminacion de Evento con Id: " + id);
           if (status === true) {
-              window.location.href = "/Admin/DeleteUser?id="+id;
+              window.location.href = "/Admin/DeleteEvento?id="+id;
           }
       }
 
-                function showPerfil(id) {
+                function mostrar(id) {
                     window.location.href = "/Home/Index";
                 }
 
-                function editPerfil(id) {
-                    window.location.href = "/Home/Index";
+                function editar(id) {
+                    window.location.href = "/Admin/EditarEvento?id="+id;
                 }
         </script>
     </div><!-- /.box-body -->

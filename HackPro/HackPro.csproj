@@ -1123,6 +1123,8 @@
     <Content Include="Views\Logged\Proyectos.cshtml" />
     <Content Include="Views\Logged\Patrocinios.cshtml" />
     <Content Include="Views\Admin\EditarUsuario.cshtml" />
+    <Content Include="Views\Admin\EditarEvento.cshtml" />
+    <Content Include="Views\Admin\EditarEquipo.cshtml" />
     <None Include="Views\Logged\Equipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

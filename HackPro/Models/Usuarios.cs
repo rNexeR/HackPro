@@ -10,6 +10,7 @@ namespace HackPro.Models
     public class Usuarios
     {
         public int id { get; set; }
+        public bool admin { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Correo de formato inválido.")]
