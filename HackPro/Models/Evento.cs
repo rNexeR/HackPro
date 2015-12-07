@@ -10,6 +10,8 @@ namespace HackPro.Models
 {
     public class Evento
     {
+        public int id { get; set; }
+
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Nombre de Evento")]
         public string tbl_evento_nombre { get; set; }

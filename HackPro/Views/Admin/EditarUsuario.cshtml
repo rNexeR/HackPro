@@ -87,16 +87,17 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.fecha_nac, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control", @type="date", @value= @Model.fecha_nac} })
+                    @Html.EditorFor(model => model.fecha_nac, new { htmlAttributes = new { @class = "form-control", @type="date", @value= @Model.fecha_nac.ToOADate()} })
                     @Html.ValidationMessageFor(model => model.fecha_nac, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-info pull-right" />
+                    <input type="submit" value="Guardar" class="btn btn-info"/>
                 </div>
             </div>
+            <hr />
         </div>
     }
 
