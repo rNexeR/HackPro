@@ -38,10 +38,14 @@ namespace HackPro.Models
 
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Inicio")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime tbl_evento_fecha_inicio { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Fin")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime tbl_evento_fecha_fin { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]

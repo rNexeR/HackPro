@@ -1125,6 +1125,9 @@
     <Content Include="Views\Admin\EditarUsuario.cshtml" />
     <Content Include="Views\Admin\EditarEvento.cshtml" />
     <Content Include="Views\Admin\EditarEquipo.cshtml" />
+    <Content Include="Views\Admin\EditarCatEvento.cshtml" />
+    <Content Include="Views\Admin\EditarProyecto.cshtml" />
+    <Content Include="Views\Admin\EditarTipoAporte.cshtml" />
     <None Include="Views\Logged\Equipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
