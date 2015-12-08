@@ -166,6 +166,40 @@ namespace HackPro.Controllers
                      
             return View();            
         }
-        
+
+        public ActionResult Evento(int id)
+        {
+            var model = new Evento();
+            var db = new hackprodb_1Entities();
+
+            var ev = db.tbl_evento.Find(id);
+            if (ev == null)
+                return RedirectToAction("Error404");
+
+            model.id = ev.tbl_evento_id;
+            model.tbl_cat_evento = ev.tbl_cat_evento_id;
+            model.tbl_evento_cal_jurado = ev.tbl_evento_cal_jurado;
+            model.tbl_evento_cal_pueblo = ev.tbl_evento_cal_pueblo;
+            model.tbl_evento_desc = ev.tbl_evento_desc;
+            model.tbl_evento_duracion = ev.tbl_evento_duracion;
+            model.tbl_evento_fecha_fin = ev.tbl_evento_fecha_fin;
+            model.tbl_evento_fecha_inicio = ev.tbl_evento_fecha_inicio;
+            model.tbl_evento_lugar = ev.tbl_evento_lugar;
+            model.tbl_evento_lugar_x = ev.tbl_evento_lugar_x;
+            model.tbl_evento_lugar_y = ev.tbl_evento_lugar_y;
+            model.tbl_evento_nombre = ev.tbl_evento_nombre;
+            model.tbl_evento_precio = ev.tbl_evento_precio;
+            model.tbl_evento_presupuesto = ev.tbl_evento_presupuesto;
+            model.tbl_evento_url = ev.tbl_evento_url;
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Error404()
+        {
+            ViewBag.Title = "Pagina no encontrada";
+            return View();
+        }
     }
 }

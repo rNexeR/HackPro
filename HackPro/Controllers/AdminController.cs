@@ -32,10 +32,17 @@ namespace HackPro.Controllers
                 return RedirectToAction("Login", "Home");
             var db = new hackprodb_1Entities();
             var exist = db.tbl_usuario.Find(id);
+            var model = new Usuarios();
             if (exist != null)
             {
-
-                return View();
+                model.id = id;
+                model.celular = exist.tbl_usuario_celular;
+                model.correo = exist.tbl_usuario_correo;
+                model.ocupacion = exist.tbl_usuario_ocupacion;
+                model.username = exist.tbl_usuario_username;
+                model.edad = DateTime.Now.Year - exist.tbl_usuario_fecha_nac.Year;
+                model.nombre = exist.tbl_usuario_p_nombre + " " + exist.tbl_usuario_p_apellido;
+                return View(model);
             }
             return RedirectToAction("Error404");
         }

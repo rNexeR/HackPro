@@ -1128,6 +1128,8 @@
     <Content Include="Views\Admin\EditarCatEvento.cshtml" />
     <Content Include="Views\Admin\EditarProyecto.cshtml" />
     <Content Include="Views\Admin\EditarTipoAporte.cshtml" />
+    <Content Include="Views\Home\Error404.cshtml" />
+    <Content Include="Views\Home\Evento.cshtml" />
     <None Include="Views\Logged\Equipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1157,7 +1159,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49580</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49580/</IISUrl>
+          <IISUrl>http://localhost:49581/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

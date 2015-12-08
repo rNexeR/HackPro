@@ -1,0 +1,118 @@
+﻿@model HackPro.Models.Evento
+
+@{
+    ViewBag.TitleHead = @Model.tbl_evento_nombre;
+}
+
+<div>
+    <div class="login-logo">
+        <p font-family ="Lucida Calligraphy"><b>@Html.DisplayFor(model => model.tbl_evento_nombre)</b><hr />
+    </div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_lugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_lugar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_lugar_x)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_lugar_x)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_lugar_y)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_lugar_y)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_fecha_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_fecha_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_cat_evento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_cat_evento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_presupuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_presupuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_cal_jurado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_cal_jurado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_cal_pueblo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_cal_pueblo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_evento_precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_evento_precio)
+        </dd>
+
+    </dl>
+</div>
