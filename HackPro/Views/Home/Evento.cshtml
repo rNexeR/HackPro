@@ -1,118 +1,182 @@
-﻿@model HackPro.Models.Evento
+﻿@model HackPro.Models.EventoView
 
 @{
     ViewBag.TitleHead = @Model.tbl_evento_nombre;
 }
-
-<div>
     <div class="login-logo">
-        <p font-family ="Lucida Calligraphy"><b>@Html.DisplayFor(model => model.tbl_evento_nombre)</b><hr />
+        <p style="font-family: Lucida Calligraphy"><b>@Html.DisplayFor(model => model.tbl_evento_nombre)</b><hr/>
     </div>
-    
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_desc)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_desc)
-        </dd>
+    <ul style="margin: 0; padding: 0">
+        <li>
+            <div class="row" alig="center">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>##</h3>
+                            <p>Usuarios Registrados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            detalles <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>##</h3>
+                            <p>Equipos Registrados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion-person-stalker"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            detalles <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>##</h3>
+                            <p>Proyectos Registrados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion-social-github"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            detalles <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>##</h3>
+                            <p>Jurados Registrados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion-android-checkbox-outline"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            detalles <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div><!-- ./col -->
+            </div>
+        </li>
+    </ul>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_lugar)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_desc).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_lugar)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_desc)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_lugar_x)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_cat_evento).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_lugar_x)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_cat_evento)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_lugar_y)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_precio).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_lugar_y)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_precio)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_duracion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_url).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_duracion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_url)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_fecha_inicio)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_lugar).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_fecha_inicio)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_lugar)
+            </dd>
+            <!--
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_lugar_x).ToString().ToUpper()
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_fecha_fin)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_lugar_x)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_fecha_fin)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_lugar_y).ToString().ToUpper()
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_cat_evento)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_lugar_y)
+            </dd>
+            -->
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_duracion).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_cat_evento)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_duracion)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_presupuesto)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_fecha_inicio).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_presupuesto)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_fecha_inicio).ToString()
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_url)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_fecha_fin).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_url)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_fecha_fin)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_cal_jurado)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_presupuesto).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_cal_jurado)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_presupuesto)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_cal_pueblo)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_cal_jurado).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_cal_pueblo)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_cal_jurado)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tbl_evento_precio)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tbl_evento_cal_pueblo).ToString().ToUpper()
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tbl_evento_precio)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tbl_evento_cal_pueblo)
+            </dd>
 
-    </dl>
-</div>
+        </dl>

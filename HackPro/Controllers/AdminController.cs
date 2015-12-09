@@ -105,7 +105,7 @@ namespace HackPro.Controllers
 
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_evento_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrar(" +
                                     x.tbl_evento_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_evento_id + ")\"></i></button>";
@@ -160,7 +160,7 @@ namespace HackPro.Controllers
 
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editPerfil(" +
                                     x.tbl_usuario_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"showPerfil(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"showPerfil(" +
                                     x.tbl_usuario_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"deleteuser(" +
                                     x.tbl_usuario_id + ")\"></i></button>";
@@ -339,7 +339,7 @@ namespace HackPro.Controllers
 
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_equipo_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrar(" +
                                     x.tbl_equipo_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_equipo_id + ")\"></i></button>";
@@ -380,7 +380,7 @@ namespace HackPro.Controllers
                 lista += "<td>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_cat_evento_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrar(" +
                                     x.tbl_cat_evento_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_cat_evento_id + ")\"></i></button>";
@@ -437,7 +437,7 @@ namespace HackPro.Controllers
                 lista += "<td>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_proyecto_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrar(" +
                                     x.tbl_proyecto_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_proyecto_id + ")\"></i></button>";
@@ -509,7 +509,7 @@ namespace HackPro.Controllers
                 lista += "<td>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-pencil\" onclick=\"editar(" +
                                     x.tbl_tipo_aporte_id + ")\"></i></button>";
-                lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-user\" onclick=\"mostrar(" +
+                lista += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrar(" +
                                     x.tbl_tipo_aporte_id + ")\"></i></button>";
                 lista += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminar(" +
                                     x.tbl_tipo_aporte_id + ")\"></i></button>";
