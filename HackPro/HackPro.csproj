@@ -1026,6 +1026,7 @@
     <Compile Include="Models\Cat_Evento.cs" />
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Evento.cs" />
+    <Compile Include="Models\EventoView.cs" />
     <Compile Include="Models\GravatarHtmlHelper.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Model1.Context.cs">
@@ -1125,6 +1126,11 @@
     <Content Include="Views\Admin\EditarUsuario.cshtml" />
     <Content Include="Views\Admin\EditarEvento.cshtml" />
     <Content Include="Views\Admin\EditarEquipo.cshtml" />
+    <Content Include="Views\Admin\EditarCatEvento.cshtml" />
+    <Content Include="Views\Admin\EditarProyecto.cshtml" />
+    <Content Include="Views\Admin\EditarTipoAporte.cshtml" />
+    <Content Include="Views\Home\Error404.cshtml" />
+    <Content Include="Views\Home\Evento.cshtml" />
     <None Include="Views\Logged\Equipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1154,7 +1160,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49580</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49580/</IISUrl>
+          <IISUrl>http://localhost:49581/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

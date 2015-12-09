@@ -69,11 +69,15 @@
       }
       
                 function showPerfil(id) {
-                    window.location.href = "/Home/Index";
+                    window.location.href = "/Admin/Profile?id="+id;
                 }
 
                 function editPerfil(id) {
                     window.location.href = "/Admin/EditarUsuario?id="+id;
+                }
+
+                function makeAdmin(id) {
+                    window.location.href = "/Admin/MakeAdmin?id=" + id;
                 }
             </script>
         </div><!-- /.box-body -->

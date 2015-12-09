@@ -10,6 +10,9 @@ namespace HackPro.Models
 {
     public class Proyectos
     {
+        public int id { get; set; }
+        public int estado { get; set; }
+
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Nombre")]
         public string tbl_proyecto_nombre { get; set; }

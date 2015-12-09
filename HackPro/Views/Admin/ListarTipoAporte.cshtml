@@ -48,19 +48,19 @@
         });
       });
 
-      function deleteuser(id) {
+      function eliminar(id) {
           var status = confirm("Confirme eliminacion de Usuario con Id: " + id);
           if (status === true) {
               window.location.href = "/Admin/DeleteTipoAporte?id="+id;
           }
       }
 
-                function showPerfil(id) {
-                    window.location.href = "/Home/Index";
+                function mostrar(id) {
+                    window.location.href = "/Admin/Index";
                 }
 
-                function editPerfil(id) {
-                    window.location.href = "/Home/Index";
+                function editar(id) {
+                    window.location.href = "/Admin/EditarTipoAporte?id="+id;
                 }
         </script>
     </div><!-- /.box-body -->

@@ -56,6 +56,11 @@ namespace HackPro.Models
         public string celular { get; set; }
 
         [DisplayName("Fecha Nacimiento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime fecha_nac { get; set; }
+
+        public int edad { get; set; }
+        public string nombre { get; set; }
     }
 }
