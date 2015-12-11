@@ -16,37 +16,26 @@ namespace HackPro.Controllers
             {
                 case 1:
                     return "Ene.";
-                    break;
                 case 2:
                     return "Feb.";
-                    break;
                 case 3:
                     return "Marzo";
-                    break;
                 case 4:
                     return "Abril";
-                    break;
                 case 5:
                     return "Mayo";
-                    break;
                 case 6:
                     return "Junio";
-                    break;
                 case 7:
                     return "Julio";
-                    break;
                 case 8:
                     return "Ago.";
-                    break;
                 case 9:
                     return "Seot.";
-                    break;
                 case 10:
                     return "Oct.";
-                    break;
                 case 11:
                     return "Nov.";
-                    break;
                 default:
                     return "Dec.";
             }
