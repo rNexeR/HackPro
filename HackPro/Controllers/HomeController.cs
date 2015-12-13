@@ -10,6 +10,7 @@ namespace HackPro.Controllers
 {
     public class HomeController : Controller
     {
+
         public string getMonthInWords(int Month)
         {
             switch (Month)
@@ -119,10 +120,10 @@ namespace HackPro.Controllers
                             return RedirectToAction("Login", "Home");
                         }
                     }
-                    
+
                 }
 
-                
+
             }
             return View();
         }
@@ -133,7 +134,7 @@ namespace HackPro.Controllers
             if (ModelState.IsValid)
             {
                 hackprodb_1Entities db = new hackprodb_1Entities();
-                var login = db.tbl_usuario.Where(p => p.tbl_usuario_correo.Equals(log.email)  && p.tbl_usuario_password.Equals(log.password));
+                var login = db.tbl_usuario.Where(p => p.tbl_usuario_correo.Equals(log.email) && p.tbl_usuario_password.Equals(log.password));
                 if (login.Count() == 1)
                 {
                     Session["UserId"] = login.First().tbl_usuario_id;
@@ -143,7 +144,7 @@ namespace HackPro.Controllers
                     Session["Ocupacion"] = login.First().tbl_usuario_ocupacion;
                     Session["Since"] = getMonthInWords(login.First().tbl_usuario_fecha_crea.Month) + " " + login.First().tbl_usuario_fecha_crea.Year;
                     Session["Admin"] = login.First().tbl_usuario_admin;
-                    if(login.First().tbl_usuario_admin)
+                    if (login.First().tbl_usuario_admin)
                         return RedirectToAction("Index", "Admin");
                     return RedirectToAction("Index", "Logged");
                 }
@@ -152,8 +153,8 @@ namespace HackPro.Controllers
                     ModelState.AddModelError("Password", "Email or Password not valid");
                 }
             }
-                     
-            return View();            
+
+            return View();
         }
 
         public ActionResult Evento(int id)
@@ -190,5 +191,6 @@ namespace HackPro.Controllers
             ViewBag.Title = "Pagina no encontrada";
             return View();
         }
+
     }
 }

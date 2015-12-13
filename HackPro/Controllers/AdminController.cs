@@ -119,7 +119,6 @@ namespace HackPro.Controllers
         /**
             Función general para listar cualquier sección en un solo View
         **/
-        [HttpPost]
         public ActionResult Listar(int? section)
         {
             if (Session["UserID"] == null)
