@@ -56,17 +56,74 @@ namespace HackPro.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Eventos()
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+
+            var lista = "";
+            var db = new hackprodb_1Entities();
+            var listado = db.tbl_equipo_evento.ToList();
+            foreach (var x in listado)
+            {
+                var evento = db.tbl_evento.Find(x.tbl_evento_id);
+
+                int user_id = Convert.ToInt16(Session["UserId"]);
+                var exist_user = db.tbl_equipo_usuario.Where(a => a.tbl_usaurio_id == user_id &&
+                    a.tbl_equipo_id == x.tbl_equipo_id);
+
+                if (!evento.tbl_evento_activo ||
+                    !x.tbl_equipo_evento_activo || !exist_user.Any())
+                    continue;
+
+                lista += "<div class=\"col-lg-3 col-xs-6\">";
+                lista += "<div class=\"small-box bg-green\">";
+                lista += "<div class=\"inner\">";
+                lista += "<h3>";
+                lista += evento.tbl_evento_nombre + "</h3>";
+                lista += "<p>" + evento.tbl_evento_lugar;
+                lista += getMonthInWords(evento.tbl_evento_fecha_inicio.Month);
+                lista += " " + evento.tbl_evento_fecha_inicio.Day;
+
+                lista += "</p> </div> <a href=\"#\" class=\"small-box-footer\">" +
+                    "details <i class=\"fa fa-arrow-circle-right\"></i> </a> </div></div>";
+            }
+            @ViewBag.HtmlStr = lista;
+
             return View();
         }
 
+        [HttpGet]
         public ActionResult Proyectos()
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+
+            var lista = "";
+            var db = new hackprodb_1Entities();
+            var listado = db.tbl_proyecto.ToList();
+            foreach (var x in listado)
+            {
+                var equipo = db.tbl_equipo.Find(x.tbl_equipo_id);
+
+                int user_id = Convert.ToInt16(Session["UserId"]);
+                var exist_user = db.tbl_equipo_usuario.Where(a => a.tbl_usaurio_id == user_id && 
+                    a.tbl_equipo_id == x.tbl_equipo_id);
+
+                if (!equipo.tbl_equipo_activo || !x.tbl_proyecto_activo || !exist_user.Any())
+                    continue;
+                
+                lista += "<div class=\"col-lg-3 col-xs-6\">";
+                lista += "<div class=\"small-box bg-red\">";
+                lista += "<div class=\"inner\">";
+                lista += "<h3>";
+                lista += x.tbl_proyecto_nombre + "</h3>";
+                lista += "<p>" + equipo.tbl_equipo_nombre;
+                lista += "</p> </div> <a href=\"#\" class=\"small-box-footer\">" +
+                    "details <i class=\"fa fa-arrow-circle-right\"></i> </a> </div></div>";
+            }
+            @ViewBag.HtmlStr = lista;
             return View();
         }
         
@@ -101,6 +158,7 @@ namespace HackPro.Controllers
             return View();
         }
         
+        [HttpGet]
         public ActionResult Patrocinios()
         {
             if (Session["UserId"] == null)

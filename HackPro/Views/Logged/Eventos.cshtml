@@ -1,56 +1,10 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Eventos";
 }
 
 <div class="row">
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-aqua">
-            <div class="inner">
-                <h3>Game 'n'Hack</h3>
-                <p>Unitec - 10 Sept.</p>
-            </div>
-            <a href="#" class="small-box-footer">
-                details <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-green">
-            <div class="inner">
-                <h3>Angelhack</h3>
-                <p>UTH - 4 Jul.</p>
-            </div>
-            <a href="#" class="small-box-footer">
-                details <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-            <div class="inner">
-                <h3>Startup MEGA</h3>
-                <p>Copantl - 11 Nov.</p>
-            </div>
-            <a href="#" class="small-box-footer">
-                details <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3>Barcamp</h3>
-                <p>CEUTEC</p>
-            </div>
-            <a href="#" class="small-box-footer">
-                details <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
+    @Html.Raw(ViewBag.HtmlStr)
 </div><!-- /.row -->
 
 <input type="button" value="show more" class="btn btn-default btn-block" />
