@@ -32,11 +32,11 @@ namespace HackPro.Models
         public string s_apellido { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [DisplayName("Contrasena*")]
+        [DisplayName("Contraseña*")]
         public string password { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [DisplayName("Repita Contrasena*")]
+        [DisplayName("Repita Contraseña*")]
         public string r_password { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
@@ -44,7 +44,7 @@ namespace HackPro.Models
         public string username { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [DisplayName("Genero*")]
+        [DisplayName("Género*")]
         public string genero { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
@@ -52,7 +52,7 @@ namespace HackPro.Models
         public string ocupacion { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
-        [DisplayName("Numero Celular*")]
+        [DisplayName("Número Celular*")]
         public string celular { get; set; }
 
         [DisplayName("Fecha Nacimiento")]

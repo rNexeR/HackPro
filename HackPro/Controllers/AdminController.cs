@@ -54,7 +54,7 @@ namespace HackPro.Controllers
             else if (Session["Admin"].Equals(false))
                 return RedirectToAction("PermissionError");
             return View();
-            
+
         }
 
         public ActionResult ListarEventos()
@@ -66,7 +66,7 @@ namespace HackPro.Controllers
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_evento.ToList();
-            
+
             foreach (var x in listado)
             {
                 if (!x.tbl_evento_activo)
@@ -116,6 +116,37 @@ namespace HackPro.Controllers
             ViewBag.HtmlStr = lista;
             return View();
         }
+        /**
+            Función general para listar cualquier sección en un solo View
+        **/
+        [HttpPost]
+        public ActionResult Listar(int? section)
+        {
+            if (Session["UserID"] == null)
+                return RedirectToAction("Login", "Home");
+            if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
+
+            switch (section)
+            {
+                case 0: //Usuarios 
+                    return Usuarios();
+                case 1: //Eventos
+                    break;
+                case 2: //Equipos
+                    break;
+                case 3: //Categoría de Eventos
+                    break;
+                case 4: //Proyectos
+                    break;
+                case 5: //TipoAporte;
+                    break;
+                default:
+                    return RedirectToAction("Index", "Admin");
+            }
+
+            return View();
+        }
 
         public ActionResult Usuarios()
         {
@@ -128,7 +159,7 @@ namespace HackPro.Controllers
             var listado = db.tbl_usuario.ToList();
             foreach (var x in listado)
             {
-                if(!x.tbl_usuario_activo)
+                if (!x.tbl_usuario_activo)
                     continue;
                 lista += "<tr>";
                 lista += "<td>";
@@ -150,10 +181,10 @@ namespace HackPro.Controllers
                 lista += x.tbl_usuario_ocupacion;
                 lista += "</td>";
                 lista += "<td>";
-                lista += x.tbl_usuario_activo? "Si": "No";
+                lista += x.tbl_usuario_activo ? "Si" : "No";
                 lista += "</td>";
                 lista += "<td>";
-                lista += x.tbl_usuario_admin? "Si": "No";
+                lista += x.tbl_usuario_admin ? "Si" : "No";
                 lista += "</td>";
 
                 lista += "<td>";
@@ -308,16 +339,15 @@ namespace HackPro.Controllers
         [HttpGet]
         public ActionResult ListarEquipos()
         {
-            if(Session["UserId"] == null)
+            if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
             else if (Session["Admin"].Equals(false))
                 return RedirectToAction("PermissionError");
             var lista = "";
             var db = new hackprodb_1Entities();
             var listado = db.tbl_equipo.ToList();
-            foreach(var x in listado)
+            foreach (var x in listado)
             {
-                ///*
                 if (!x.tbl_equipo_activo)
                     continue;
 

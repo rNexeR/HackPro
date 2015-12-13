@@ -47,32 +47,32 @@
         </table>
 
         <script>
-      $(function () {
-        //$("#example1").DataTable();
-        $('#example1').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
+            $(function () {
+                //$("#example1").DataTable();
+                $('#example1').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
 
-      function eliminar(id) {
-          var status = confirm("Confirme eliminacion de Evento con Id: " + id);
-          if (status === true) {
-              window.location.href = "/Admin/DeleteEvento?id="+id;
-          }
-      }
-
-                function mostrar(id) {
-                    window.location.href = "/Home/Evento?id="+id;
+            function eliminar(id) {
+                var status = confirm("Confirme eliminación de Evento con Id: " + id);
+                if (status === true) {
+                    window.location.href = "/Admin/DeleteEvento?id=" + id;
                 }
+            }
 
-                function editar(id) {
-                    window.location.href = "/Admin/EditarEvento?id="+id;
-                }
+            function mostrar(id) {
+                window.location.href = "/Home/Evento?id=" + id;
+            }
+
+            function editar(id) {
+                window.location.href = "/Admin/EditarEvento?id=" + id;
+            }
         </script>
     </div><!-- /.box-body -->
 </div><!-- /.box -->
