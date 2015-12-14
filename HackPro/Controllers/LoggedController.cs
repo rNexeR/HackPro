@@ -42,6 +42,7 @@ namespace HackPro.Controllers
         }
 
         // GET: Logged
+        [HttpGet]
         public ActionResult Index()
         {
             if (Session["UserId"] == null)
