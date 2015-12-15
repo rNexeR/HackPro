@@ -28,8 +28,8 @@ namespace HackPro.Models
         public string tbl_evento_nombre { get; set; }
         public string tbl_evento_desc { get; set; }
         public string tbl_evento_lugar { get; set; }
-        public int tbl_evento_lugar_x { get; set; }
-        public int tbl_evento_lugar_y { get; set; }
+        public decimal tbl_evento_lugar_x { get; set; }
+        public decimal tbl_evento_lugar_y { get; set; }
         public bool tbl_evento_activo { get; set; }
         public int tbl_evento_duracion { get; set; }
         public System.DateTime tbl_evento_fecha_inicio { get; set; }

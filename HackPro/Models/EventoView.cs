@@ -22,10 +22,10 @@ namespace HackPro.Models
         public string tbl_evento_lugar { get; set; }
         
         [DisplayName("Coordenada X")]
-        public int tbl_evento_lugar_x { get; set; }
+        public decimal tbl_evento_lugar_x { get; set; }
         
         [DisplayName("Coordenada Y")]
-        public int tbl_evento_lugar_y { get; set; }
+        public decimal tbl_evento_lugar_y { get; set; }
         
         [DisplayName("Duracion (hrs)")]
         public int tbl_evento_duracion { get; set; }

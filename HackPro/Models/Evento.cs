@@ -26,11 +26,11 @@ namespace HackPro.Models
 
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Coordenada X")]
-        public int tbl_evento_lugar_x { get; set; }
+        public decimal tbl_evento_lugar_x { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Coordenada Y")]
-        public int tbl_evento_lugar_y { get; set; }
+        public decimal tbl_evento_lugar_y { get; set; }
 
         [Required(ErrorMessage = "Campo Requerido")]
         [DisplayName("Duracion (hrs)")]
