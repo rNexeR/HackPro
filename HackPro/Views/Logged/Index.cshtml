@@ -69,7 +69,7 @@
         // you can either make up a JSON list server side, or call it from a controller using JSONResult
         var data = [
                   { "Id": 1, "PlaceName": "Wonderland", "Fecha": "9-5, M-F", "GeoLong": "15.473692", "GeoLat": "-88.004896" },
-                  { "Id": 2, "PlaceName": "Centro Cultural Sampedrano ", "Fecha": "9-1,2-5, M-F", "GeoLong": "15.509690", "GeoLat": "-88.026510" },
+                  { "Id": 2, "PlaceName": "Centro Cultural Sampedrano ", "Fecha": "9-1,2-5, M-F https://github.com", "GeoLong": "15.509690", "GeoLat": "-88.026510" },
                   { "Id": 3, "PlaceName": "Unitec - GNH", "Fecha": "10-12 Dic, M-F", "GeoLong": "15.562553", "GeoLat": "-88.023692" },
                   { "Id": 4, "PlaceName": "Unitec - The Hack", "Fecha": "10-12 Dic, M-F", "GeoLong": "15.562553", "GeoLat": "-88.023590" }
                ];
@@ -94,6 +94,11 @@
             google.maps.event.addListener(marker, 'click', function () {
                 map.setZoom(16);
                 infowindow.open(map, marker);
+            });
+
+            google.maps.event.addListener(map, 'dblclick', function (event) {
+                map.setZoom(16);           
+                alert('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
             });
 
         })
