@@ -47,7 +47,8 @@
         var mapOptions = {
             zoom: 8,
             center: Honduras,
-            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            MapTypeControlStyleId: google.maps.MapTypeControlStyle.DROPDOWN_MENU
         };
 
         // This makes the div with id "map_canvas" a google map
@@ -99,6 +100,14 @@
             google.maps.event.addListener(map, 'dblclick', function (event) {
                 map.setZoom(16);           
                 alert('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
+                event.stop();
+                
+                console.log(event);  //see console for original mouse event     
+                var ev = event.b;  //event.b object is original mouse event and might change
+
+                //prevent defaults
+                ev.preventDefault();
+                ev.stopPropagation();
             });
 
         })
