@@ -38,32 +38,32 @@
         </table>
 
         <script>
-      $(function () {
-        //$("#example1").DataTable();
-        $('#example1').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
+            $(function () {
+                //$("#example1").DataTable();
+                $('#example1').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
 
-      function eliminar(id) {
-          var status = confirm("Confirme eliminacion de Usuario con Id: " + id);
-          if (status === true) {
-              window.location.href = "/Admin/DeleteUser?id="+id;
-          }
-      }
-
-                function mostrar(id) {
-                    window.location.href = "/Admin/Index";
+            function eliminar(id) {
+                var status = confirm("Confirme eliminacion de Usuario con Id: " + id);
+                if (status === true) {
+                    window.location.href = "/Admin/DeleteUser?id=" + id;
                 }
+            }
 
-                function editar(id) {
-                    window.location.href = "/Admin/EditarCatEvento?id="+id;
-                }
+            function mostrar(id) {
+                window.location.href = "/Admin/Index";
+            }
+
+            function editar(id) {
+                window.location.href = "/Admin/EditarCatEvento?id=" + id;
+            }
         </script>
     </div><!-- /.box-body -->
 </div><!-- /.box -->
