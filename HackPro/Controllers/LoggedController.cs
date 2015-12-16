@@ -233,13 +233,14 @@ namespace HackPro.Controllers
 
             var model = new Proyectos();
             var db = new hackprodb_1Entities();
+            int my_id = Convert.ToInt16(Session["UserId"]);
             model.eventos = db.tbl_evento.ToList().Select(x => new SelectListItem
             {
                 Value = x.tbl_evento_id.ToString(),
                 Text = x.tbl_evento_nombre
             });
 
-            model.equipos = db.tbl_equipo.ToList().Select(x => new SelectListItem
+            model.equipos = db.tbl_equipo.Where(p => p.tbl_equipo_usuario_admin == my_id).ToList().Select(x => new SelectListItem
             {
                 Value = x.tbl_equipo_id.ToString(),
                 Text = x.tbl_equipo_nombre
