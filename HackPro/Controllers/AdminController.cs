@@ -49,12 +49,13 @@ namespace HackPro.Controllers
 
         public ActionResult Index()
         {
-            if (Session["UserId"] == null)
+            /*if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
             else if (Session["Admin"].Equals(false))
                 return RedirectToAction("PermissionError");
             return View();
-
+            */
+            return RedirectToAction("Index", "Logged");
         }
 
         public ActionResult ListarEventos()
