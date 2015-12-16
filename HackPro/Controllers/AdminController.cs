@@ -652,25 +652,27 @@ namespace HackPro.Controllers
             return RedirectToAction("ListarProyectos");
         }
 
-        [HttpGet]
-        public ActionResult CrearEvento()
-        {
-            if (Session["UserId"] == null)
-                return RedirectToAction("Login", "Home");
-            else if (Session["Admin"].Equals(false))
-                return RedirectToAction("PermissionError");
-            var model = new Evento();
-            var db = new hackprodb_1Entities();
-            model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
-            {
-                Value = x.tbl_cat_evento_id.ToString(),
-                Text = x.tbl_cat_evento_desc
-            });
-            return View(model);
-        }
+        //[HttpGet]
+        //public ActionResult CrearEvento()
+        //{
+        //    if (Session["UserId"] == null)
+        //        return RedirectToAction("Login", "Home");
+        //    else if (Session["Admin"].Equals(false))
+        //        return RedirectToAction("PermissionError");
+        //    var model = new Evento();
+        //    var db = new hackprodb_1Entities();
+        //    model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
+        //    {
+        //        Value = x.tbl_cat_evento_id.ToString(),
+        //        Text = x.tbl_cat_evento_desc
+        //    });
+        //    return View(model);
+        //}
 
         //Cuando se haya elegido desde el mapa (x, y)
-        public ActionResult CrearEvento(decimal latitud, decimal longitud)
+        [HttpGet]
+       // [ActionName("CreateEvento")]
+        public ActionResult CrearEvento(string latitud, string longitud)
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
@@ -683,8 +685,14 @@ namespace HackPro.Controllers
                 Value = x.tbl_cat_evento_id.ToString(),
                 Text = x.tbl_cat_evento_desc
             });
-            model.tbl_evento_lugar_x = latitud;
-            model.tbl_evento_lugar_y = longitud;
+            if(String.IsNullOrEmpty(latitud) || String.IsNullOrEmpty(longitud))
+            {
+                latitud = "0";
+                longitud = "0";
+            }
+
+            model.tbl_evento_lugar_x = Convert.ToDecimal(latitud);
+            model.tbl_evento_lugar_y = Convert.ToDecimal(longitud);
             Console.WriteLine("Lat: " + latitud + " Long: " + longitud);
             return View(model);
         }
