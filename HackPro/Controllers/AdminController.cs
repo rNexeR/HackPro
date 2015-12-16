@@ -68,11 +68,11 @@ namespace HackPro.Controllers
 
                 foreach (var n in jurados)
                 {
-                    var user = db.tbl_usuario.Find(n.tbl_jurado_id);
+                    var eventoActual = db.tbl_evento.Find(n.tbl_evento_id);
                     jurado += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
                     jurado += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
-                    jurado += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + user.tbl_usuario_username + "</span>";
-                    jurado += "<span class=\"info-box-number\">" + user.tbl_usuario_ocupacion + "</span></div></div></div>";
+                    jurado += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + eventoActual.tbl_evento_lugar + "</span>";
+                    jurado += "<span class=\"info-box-number\">" + eventoActual.tbl_evento_nombre + "</span></div></div></div>";
                 }
 
                 foreach (var n in administra)
@@ -88,8 +88,8 @@ namespace HackPro.Controllers
                 {
                     events += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
                     events += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
-                    events += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + n.tbl_evento_nombre + "</span>";
-                    events += "<span class=\"info-box-number\">" + n.tbl_evento_lugar + "</span></div></div></div>";
+                    events += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + n.tbl_evento_lugar + "</span>";
+                    events += "<span class=\"info-box-number\">" + n.tbl_evento_nombre + "</span></div></div></div>";
                 }
 
                 foreach (var n in proyectos)
