@@ -38,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.tbl_evento_lugar_x, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_lugar_x, new {htmlAttributes = new {@class = "form-control", @placeholder = "Coordenada en X de la sede del Lugar"}})
+                @Html.EditorFor(model => model.tbl_evento_lugar_x, new {htmlAttributes = new {@class = "form-control", @placeholder = "Coordenada en X de la sede del Lugar", @Value = Model.tbl_evento_lugar_x}})
                 @Html.ValidationMessageFor(model => model.tbl_evento_lugar_x, "", new {@class = "text-danger"})
             </div>
         </div>

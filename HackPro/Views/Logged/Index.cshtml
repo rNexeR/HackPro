@@ -53,20 +53,20 @@
         // This makes the div with id "map_canvas" a google map
         var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-      
-        // a sample list of JSON encoded data of places to visit in Liverpool, UK
+
+        // a sample list of JSON encoded data
         // you can either make up a JSON list server side, or call it from a controller using JSONResult
         var data = [
-                  { "Id": 1, "PlaceName": "Wonderland", "Fecha": "9-5, M-F", "GeoLong": "15.473692", "GeoLat": "-88.004896" },
-                  { "Id": 2, "PlaceName": "Centro Cultural Sampedrano ", "Fecha": "9-1,2-5, M-F https://github.com", "GeoLong": "15.509690", "GeoLat": "-88.026510" },
-                  { "Id": 3, "PlaceName": "Unitec - GNH", "Fecha": "10-12 Dic, M-F", "GeoLong": "15.562553", "GeoLat": "-88.023692" },
-                  { "Id": 4, "PlaceName": "Unitec - The Hack", "Fecha": "10-12 Dic, M-F", "GeoLong": "15.562553", "GeoLat": "-88.023590" }
+                  { "Id": 1, "PlaceName": "Wonderland", "Fecha": "9-5, M-F", "GeoLat": "15.473692", "GeoLong": "-88.004896" },
+                  { "Id": 2, "PlaceName": "Centro Cultural Sampedrano ", "Fecha": "9-1,2-5, M-F https://github.com", "GeoLat": "15.509690", "GeoLong": "-88.026510" },
+                  { "Id": 3, "PlaceName": "Unitec - GNH", "Fecha": "10-12 Dic, M-F", "GeoLat": "15.562553", "GeoLong": "-88.023692" },
+                  { "Id": 4, "PlaceName": "Unitec - The Hack", "Fecha": "10-12 Dic, M-F", "GeoLat": "15.562553", "GeoLong": "-88.023590" }
                ];
 
         // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
         $.each(data, function (i, item) {
             var marker = new google.maps.Marker({
-                'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
+                'position': new google.maps.LatLng(item.GeoLat, item.GeoLong),
                 'map': map,
                 'title': item.PlaceName
             });
@@ -82,15 +82,23 @@
 
             // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
             google.maps.event.addListener(marker, 'click', function () {
-                map.setZoom(16);
+                map.setZoom(13);
                 infowindow.open(map, marker);
             });
 
             google.maps.event.addListener(map, 'dblclick', function (event) {
-                if (event.handled !== true) { 
-                    event.handled = true;                  
-                    map.setZoom(16);
+                if (event.handled !== true) {
+                    event.handled = true;
+                    map.setZoom(13);
                     alert('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
+
+                    var crearEv = confirm("¿Crear evento en estas coordenadas?");
+                    if (crearEv === true) {
+                        var a = event.latLng.lat();
+                        var b = event.latLng.lng();
+                        window.location.href = "/Admin/CrearEvento?latitud=" + event.latLng.lat()
+                            + "&longitud=" + event.latLng.lng();
+                    }
                 }
             });
 
