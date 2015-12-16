@@ -77,8 +77,9 @@
 
             // put in some information about each json object - in this case, the opening hours.
             var infowindow = new google.maps.InfoWindow({
-                content: "<div class='infoDiv'><h2>" + item.PlaceName + "</h2>"
-                    + "<div><h4>Fecha: " + item.Fecha + "</h4></div></div>"
+                content: "<div class='infoDiv'><h2>" + item.NombreEvento + "</h2>"
+                    + "<div><h4>Fecha: " + item.Fecha + "</h4></div>"
+                    + "<div><h4>Lugar: " + item.PlaceName + "</h4></div></div>"
             });
 
             // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!

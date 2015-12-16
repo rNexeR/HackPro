@@ -62,6 +62,7 @@ namespace HackPro.Controllers
                 lista += "{\"Id\":" + /*eventos[i].tbl_evento_id*/ (i+1) + ",";
                 lista += "\"PlaceName\": \"" + eventos[i].tbl_evento_lugar + "\",";
                 lista += "\"Fecha\": \"" + eventos[i].tbl_evento_fecha_inicio + "\", ";
+                lista += "\"NombreEvento\": \"" + eventos[i].tbl_evento_nombre + "\", ";
                 lista += "\"GeoLat\": \"" + eventos[i].tbl_evento_lugar_x + "\", ";
                 lista += "\"GeoLong\": \"" + eventos[i].tbl_evento_lugar_y + "\"}";
 
