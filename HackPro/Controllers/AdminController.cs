@@ -652,8 +652,27 @@ namespace HackPro.Controllers
             return RedirectToAction("ListarProyectos");
         }
 
+        //[HttpGet]
+        //public ActionResult CrearEvento()
+        //{
+        //    if (Session["UserId"] == null)
+        //        return RedirectToAction("Login", "Home");
+        //    else if (Session["Admin"].Equals(false))
+        //        return RedirectToAction("PermissionError");
+        //    var model = new Evento();
+        //    var db = new hackprodb_1Entities();
+        //    model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
+        //    {
+        //        Value = x.tbl_cat_evento_id.ToString(),
+        //        Text = x.tbl_cat_evento_desc
+        //    });
+        //    return View(model);
+        //}
+
+        //Cuando se haya elegido desde el mapa (x, y)
         [HttpGet]
-        public ActionResult CrearEvento()
+       // [ActionName("CreateEvento")]
+        public ActionResult CrearEvento(string latitud, string longitud)
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
@@ -666,6 +685,15 @@ namespace HackPro.Controllers
                 Value = x.tbl_cat_evento_id.ToString(),
                 Text = x.tbl_cat_evento_desc
             });
+            if(String.IsNullOrEmpty(latitud) || String.IsNullOrEmpty(longitud))
+            {
+                latitud = "0";
+                longitud = "0";
+            }
+
+            model.tbl_evento_lugar_x = Convert.ToDecimal(latitud);
+            model.tbl_evento_lugar_y = Convert.ToDecimal(longitud);
+            Console.WriteLine("Lat: " + latitud + " Long: " + longitud);
             return View(model);
         }
 
@@ -884,7 +912,119 @@ namespace HackPro.Controllers
             model.tbl_evento_presupuesto = ev.tbl_evento_presupuesto;
             model.tbl_evento_url = ev.tbl_evento_url;
 
+            var equipos = db.tbl_equipo_evento.Where(p => p.tbl_evento_id == id).ToList();
+            var jurados = db.tbl_jurado.Where(p => p.tbl_evento_id == id).ToList();
+            string groups = "", jurado = "";
+            foreach (var n in equipos)
+            {
+                if (n.tbl_equipo_evento_activo == false)
+                    continue;
+                var equipoActual = db.tbl_equipo.Find(n.tbl_equipo_id);
+                groups += "<tr>";
+
+                groups += "<td>";
+                groups += equipoActual.tbl_equipo_id;
+                groups += "</td>";
+
+                groups += "<td>";
+                groups += equipoActual.tbl_equipo_nombre;
+                groups += "</td>";
+
+                groups += "<td>";
+                groups += equipoActual.tbl_equipo_usuario_admin;
+                groups += "</td>";
+
+                groups += "<td>";
+                groups += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrarEquipo(" +
+                                    equipoActual.tbl_equipo_id + ")\"></i></button>";
+                groups += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminarEquipo(" +
+                                    equipoActual.tbl_equipo_id + ")\"></i></button>";
+                groups += "</td>";
+
+                groups += "</tr>";
+            }
+
+            foreach (var n in jurados)
+            {
+                if (n.tbl_jurado_activo == false)
+                    continue;
+                var user = db.tbl_usuario.Find(n.tbl_jurado_id);
+                jurado += "<tr>";
+
+                jurado += "<td>";
+                jurado += user.tbl_usuario_id;
+                jurado += "</td>";
+
+                jurado += "<td>";
+                jurado += user.tbl_usuario_username;
+                jurado += "</td>";
+
+                jurado += "<td>";
+                jurado += user.tbl_usuario_p_nombre + " " + user.tbl_usuario_p_apellido;
+                jurado += "</td>";
+
+                jurado += "<td>";
+                jurado += user.tbl_usuario_ocupacion;
+                jurado += "</td>";
+
+                jurado += "<td>";
+                jurado += "<button class=\"btn\"><i class=\"fa fa-fw  fa-eye\" onclick=\"mostrarJurado(" +
+                                    user.tbl_usuario_id + ")\"></i></button>";
+                jurado += "<button class=\"btn\"><i class=\"fa fa-fw fa-trash\" onclick=\"eliminarJurado(" +
+                                    user.tbl_usuario_id + "," + id + ")\"></i></button>";
+                jurado += "</td>";
+
+                jurado += "</tr>";
+            }
+
+            ViewBag.Equipos = groups;
+            ViewBag.Jurados = jurado;
+
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteJurado(int juradoid, int eventoid)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
+            var db = new hackprodb_1Entities();
+            var fila = db.tbl_jurado.Where(p => p.tbl_evento_id == eventoid && p.tbl_jurado_id == juradoid);
+            if (fila.Any())
+            {
+                fila.First().tbl_jurado_activo = false;
+                db.Entry(fila.First()).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                return RedirectToAction("Error404");
+            }
+            return RedirectToAction("EditarEvento", new { id = eventoid });
+        }
+
+        [HttpGet]
+        public ActionResult DeleteEquipoEvento(int equipoid, int eventoid)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
+            var db = new hackprodb_1Entities();
+            var fila = db.tbl_equipo_evento.Where(p => p.tbl_evento_id == eventoid && p.tbl_equipo_id == equipoid);
+            if (fila.Any())
+            {
+                fila.First().tbl_equipo_evento_activo = false;
+                db.Entry(fila.First()).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                return RedirectToAction("Error404");
+            }
+            return RedirectToAction("EditarEvento", new { id = eventoid });
         }
 
         [HttpPost]

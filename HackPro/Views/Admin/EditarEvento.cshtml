@@ -10,121 +10,121 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         @Html.HiddenFor(model => model.id)
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_nombre, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_nombre, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_nombre, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_nombre, new {htmlAttributes = new {@class = "form-control", @placeholder = "Nombre del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_nombre, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_desc, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_desc, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descripcion del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_desc, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_desc, new {htmlAttributes = new {@class = "form-control", @placeholder = "Descripcion del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_desc, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_lugar, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_lugar, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_lugar, new { htmlAttributes = new { @class = "form-control", @placeholder = "Lugar sede del evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_lugar, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_lugar, new {htmlAttributes = new {@class = "form-control", @placeholder = "Lugar sede del evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_lugar, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_lugar_x, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_lugar_x, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_lugar_x, new { htmlAttributes = new { @class = "form-control", @placeholder = "Coordenada en X de la sede del Lugar" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_lugar_x, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_lugar_x, new {htmlAttributes = new {@class = "form-control", @placeholder = "Coordenada en X de la sede del Lugar"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_lugar_x, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_lugar_y, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_lugar_y, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_lugar_y, new { htmlAttributes = new { @class = "form-control", @placeholder = "Coordenada en Y de la sede del Lugar" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_lugar_y, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_lugar_y, new {htmlAttributes = new {@class = "form-control", @placeholder = "Coordenada en Y de la sede del Lugar"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_lugar_y, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_duracion, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_duracion, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_duracion, new { htmlAttributes = new { @class = "form-control", @placeholder = "Duracion del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_duracion, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_duracion, new {htmlAttributes = new {@class = "form-control", @placeholder = "Duracion del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_duracion, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_fecha_inicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_fecha_inicio, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_fecha_inicio, new { htmlAttributes = new { @type = "date", @class = "form-control", @placeholder = "Fecha Inicio del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_fecha_inicio, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_fecha_inicio, new {htmlAttributes = new {@type = "date", @class = "form-control", @placeholder = "Fecha Inicio del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_fecha_inicio, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_fecha_fin, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_fecha_fin, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_fecha_fin, new { htmlAttributes = new { @type = "date", @class = "form-control", @placeholder = "Fecha Finalizacion del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_fecha_fin, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_fecha_fin, new {htmlAttributes = new {@type = "date", @class = "form-control", @placeholder = "Fecha Finalizacion del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_fecha_fin, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_cat_evento, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_cat_evento, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.tbl_cat_evento, Model.cat_evento, new { @class = "form-control select2" })
-                @Html.ValidationMessageFor(model => model.cat_evento, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.tbl_cat_evento, Model.cat_evento, new {@class = "form-control select2"})
+                @Html.ValidationMessageFor(model => model.cat_evento, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_presupuesto, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_presupuesto, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_presupuesto, new { htmlAttributes = new { @class = "form-control", @placeholder = "Presupuesto del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_presupuesto, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_presupuesto, new {htmlAttributes = new {@class = "form-control", @placeholder = "Presupuesto del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_presupuesto, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_url, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_url, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_url, new { htmlAttributes = new { @class = "form-control", @placeholder = "URL del sitio del Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_url, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_url, new {htmlAttributes = new {@class = "form-control", @placeholder = "URL del sitio del Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_url, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_cal_jurado, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_cal_jurado, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.tbl_evento_cal_jurado)
-                    @Html.ValidationMessageFor(model => model.tbl_evento_cal_jurado, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.tbl_evento_cal_jurado, "", new {@class = "text-danger"})
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_cal_pueblo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_cal_pueblo, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.tbl_evento_cal_pueblo)
-                    @Html.ValidationMessageFor(model => model.tbl_evento_cal_pueblo, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.tbl_evento_cal_pueblo, "", new {@class = "text-danger"})
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tbl_evento_precio, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tbl_evento_precio, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tbl_evento_precio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Precio de Inscripcion al Evento" } })
-                @Html.ValidationMessageFor(model => model.tbl_evento_precio, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tbl_evento_precio, new {htmlAttributes = new {@class = "form-control", @placeholder = "Precio de Inscripcion al Evento"}})
+                @Html.ValidationMessageFor(model => model.tbl_evento_precio, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -133,8 +133,122 @@
                 <input type="submit" value="Guardar" class="btn btn-info"/>
             </div>
         </div>
-        <hr />
+        <hr/>
     </div>
+
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#Equipos" data-toggle="tab">Equipos</a></li>
+            <li><a href="#Jurados" data-toggle="tab">Jurados</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane" id="Equipos">
+                <div class="box-body pad table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Admin</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @Html.Raw(ViewBag.Equipos)
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Admin</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <script>
+            $(function () {
+                //$("#example1").DataTable();
+                $('#example1').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
+
+            function eliminarEquipo(id) {
+                var status = confirm("Confirme desvinculacion de Equipo con Id: " + id);
+                if (status === true) {
+                    window.location.href = "/Admin/DeleteEquipoEvento?equipoid=" + id+"&eventoid=@Model.id";
+                }
+            }
+
+            function mostrarEquipo(id) {
+                window.location.href = "/Home/Equipo?id=" + id;
+            }
+                    </script>
+                </div><!-- /.box-body -->
+
+                </div><!-- /.tab-pane -->
+            <div class="tab-pane" id="Jurados">
+                <div class="box-body pad table-responsive">
+                    <table id="example2" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Username</th>
+                                <th>Nombre</th>
+                                <th>Ocupacion</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @Html.Raw(ViewBag.Jurados)
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Username</th>
+                                <th>Nombre</th>
+                                <th>Ocupacion</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <script>
+            $(function () {
+                //$("#example1").DataTable();
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
+
+            function eliminarJurado(id, eid) {
+                var status = confirm("Confirme desvinculacion de Jurado con Id: " + id);
+                if (status === true) {
+                    window.location.href = "/Admin/DeleteJurado?juradoid=" + id + "&eventoid="+eid;
+                }
+            }
+
+            function mostrarJurado(id) {
+                window.location.href = "/Admin/Profile?id=" + id;
+            }
+                    </script>
+                </div><!-- /.box-body -->
+            </div><!-- /.tab-pane -->
+        </div><!-- /.tab-content -->
+    </div><!-- /.nav-tabs-custom -->
 }
 
 
