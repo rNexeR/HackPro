@@ -1519,6 +1519,11 @@
     <Content Include="Views\Admin\EditarTipoAporte.cshtml" />
     <Content Include="Views\Home\Error404.cshtml" />
     <Content Include="Views\Home\Evento.cshtml" />
+    <Content Include="Views\Home\UsuariosEvento.cshtml" />
+    <Content Include="Views\Home\EquiposEvento.cshtml" />
+    <Content Include="Views\Home\ProyectosEvento.cshtml" />
+    <Content Include="Views\Home\JuradosEvento.cshtml" />
+    <Content Include="Views\Home\Equipo.cshtml" />
     <None Include="Views\Logged\Equipos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

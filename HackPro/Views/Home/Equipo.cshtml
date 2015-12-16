@@ -1,0 +1,36 @@
+﻿@model HackPro.Models.Equipo
+
+@{
+    ViewBag.Title = "Equipo";
+}
+
+<div class="login-logo">
+    <p style="font-family: Lucida Calligraphy"><b>@Html.DisplayFor(model => model.tbl_equipo_nombre)</b><hr />
+</div>
+
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#Eventos" data-toggle="tab">Eventos</a></li>
+        <li><a href="#Proyectos" data-toggle="tab">Proyectos</a></li>
+        <li><a href="#Usuarios" data-toggle="tab">Usuarios</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="active tab-pane" id="Eventos">
+            <div class="row">
+                @Html.Raw(ViewBag.eventos)
+            </div>
+
+        </div><!-- /.tab-pane -->
+        <div class="tab-pane" id="Proyectos">
+            <div class="row">
+                @Html.Raw(ViewBag.proyectos)
+            </div>
+        </div><!-- /.tab-pane -->
+
+        <div class="tab-pane" id="Usuarios">
+            <div class="row">
+                @Html.Raw(ViewBag.usuarios)
+            </div>
+        </div><!-- /.tab-pane -->
+    </div><!-- /.tab-content -->
+</div><!-- /.nav-tabs-custom -->

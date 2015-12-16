@@ -34,24 +34,6 @@
                     </ul>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
-            <!-- About Me Box -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Administrador (a) de</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                    
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
-
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Jurado de</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                    
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
 
         </div><!-- /.col -->
 
@@ -60,23 +42,40 @@
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#activity" data-toggle="tab">Eventos</a></li>
-                    <li><a href="#timeline" data-toggle="tab">Proyectos</a></li>
-                    <li><a href="#settings" data-toggle="tab">Equipos</a></li>
+                    <li class="active"><a href="#Eventos" data-toggle="tab">Eventos</a></li>
+                    <li><a href="#Proyectos" data-toggle="tab">Proyectos</a></li>
+                    <li><a href="#Equipos" data-toggle="tab">Equipos</a></li>
+                    <li><a href="#Administrador" data-toggle="tab">Administrador de</a></li>
+                    <li><a href="#Jurado" data-toggle="tab">Jurado de</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="active tab-pane" id="activity">
-                        <!-- Post -->
-                        
-                        <!-- Post -->
+                    <div class="active tab-pane" id="Eventos">
+                        <div class="row">
+                            @Html.Raw(ViewBag.Eventos)
+                        </div>
 
                     </div><!-- /.tab-pane -->
-                    <div class="tab-pane" id="timeline">
-                        
+                    <div class="tab-pane" id="Proyectos">
+                        <div class="row">
+                            @Html.Raw(ViewBag.Proyectos)
+                        </div>
                     </div><!-- /.tab-pane -->
 
-                    <div class="tab-pane" id="settings">
-                        
+                    <div class="tab-pane" id="Equipos">
+                        <div class="row">
+                            @Html.Raw(ViewBag.Equipos)
+                        </div>
+                    </div><!-- /.tab-pane -->
+                    <div class="tab-pane" id="Administrador">
+                        <div class="row">
+                            @Html.Raw(ViewBag.Administrador)
+                        </div>
+
+                    </div><!-- /.tab-pane -->
+                    <div class="tab-pane" id="Jurado">
+                        <div class="row">
+                            @Html.Raw(ViewBag.Jurado)
+                        </div>
                     </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
             </div><!-- /.nav-tabs-custom -->
