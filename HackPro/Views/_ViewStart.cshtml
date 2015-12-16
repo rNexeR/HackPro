@@ -1,6 +1,6 @@
 ﻿@{
     if(Session["UserId"] == null) {
-        Layout = "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_HomeLayout.cshtml";
     }else if (Session["Admin"].Equals(true) )
     {
         Layout = "~/Views/Shared/_AdminLayout.cshtml";
