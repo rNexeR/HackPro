@@ -47,6 +47,28 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] == null)
                 return RedirectToAction("Login", "Home");
+
+            var db = new hackprodb_1Entities();
+            var eventos = db.tbl_evento.ToList();
+
+            var lista = "";
+            int cant_eventos = eventos.Count();
+            for(int i = 0; i < cant_eventos; i++)
+            {            
+            //foreach(var x in eventos)
+            //{
+                //Format
+                //{ "Id": 1, "PlaceName": "Wonderland", "Fecha": "9-5, M-F", "GeoLat": "15.473692", "GeoLong": "-88.004896" },
+                lista += "{\"Id\":" + /*eventos[i].tbl_evento_id*/ (i+1) + ",";
+                lista += "\"PlaceName\": \"" + eventos[i].tbl_evento_lugar + "\",";
+                lista += "\"Fecha\": \"" + eventos[i].tbl_evento_fecha_inicio + "\", ";
+                lista += "\"GeoLat\": \"" + eventos[i].tbl_evento_lugar_x + "\", ";
+                lista += "\"GeoLong\": \"" + eventos[i].tbl_evento_lugar_y + "\"}";
+
+                if (i != cant_eventos - 1)
+                    lista += ",";
+            }
+            @ViewBag.HtmlStr = lista;
             return View();
         }
 
