@@ -1492,13 +1492,12 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Usuarios.cshtml" />
-    <Content Include="Views\Admin\CrearEvento.cshtml" />
+    <Content Include="Views\Logged\CrearEvento.cshtml" />
     <Content Include="Views\Admin\ListarEventos.cshtml" />
     <Content Include="Views\Admin\CrearCatEvento.cshtml" />
-    <Content Include="Views\Admin\CrearEquipo.cshtml" />
     <Content Include="Views\Admin\ListarEquipos.cshtml" />
     <Content Include="Views\Admin\ListarCatEventos.cshtml" />
-    <Content Include="Views\Admin\CrearProyecto.cshtml" />
+    <Content Include="Views\Logged\CrearProyecto.cshtml" />
     <Content Include="Views\Admin\ListarProyectos.cshtml" />
     <Content Include="Views\Admin\CrearTipoAporte.cshtml" />
     <Content Include="Views\Admin\ListarTipoAporte.cshtml" />
