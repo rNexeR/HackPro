@@ -42,6 +42,70 @@ namespace HackPro.Controllers
                 model.username = exist.tbl_usuario_username;
                 model.edad = DateTime.Now.Year - exist.tbl_usuario_fecha_nac.Year;
                 model.nombre = exist.tbl_usuario_p_nombre + " " + exist.tbl_usuario_p_apellido;
+
+                string jurado = "", administrador = "", events = "", groups = "", projects = "";
+
+                var jurados = db.tbl_jurado.Where(p => p.tbl_jurado_id == id).ToList();
+                var administra = db.tbl_evento.Where(p => p.tbl_usuario_id == id).ToList();
+                var equipos = db.tbl_equipo_usuario.Where(p => p.tbl_usaurio_id == id).ToList();
+                var proyectos = new List<tbl_proyecto>();
+                var eventos = new List<tbl_evento>();
+                foreach (var n in equipos)
+                {
+                    var equipo = db.tbl_equipo.Find(n.tbl_equipo_id);
+                    groups += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
+                    groups += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
+                    groups += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + equipo.tbl_equipo_evento + "</span>";
+                    groups += "<span class=\"info-box-number\">" + equipo.tbl_equipo_nombre + "</span></div></div></div>";
+                    var tempProjects = db.tbl_proyecto.Where(p => p.tbl_equipo_id == equipo.tbl_equipo_id).ToList();
+                    var tempEvents = db.tbl_equipo_evento.Where(p => p.tbl_equipo_id == equipo.tbl_equipo_id).ToList();
+                    if (tempProjects.Any())
+                        proyectos.AddRange(tempProjects);
+                    if (tempEvents.Any())
+                        eventos.AddRange(tempEvents.Select(m => db.tbl_evento.Find(m.tbl_evento_id)));
+
+                }
+
+                foreach (var n in jurados)
+                {
+                    var user = db.tbl_usuario.Find(n.tbl_jurado_id);
+                    jurado += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
+                    jurado += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
+                    jurado += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + user.tbl_usuario_username + "</span>";
+                    jurado += "<span class=\"info-box-number\">" + user.tbl_usuario_ocupacion + "</span></div></div></div>";
+                }
+
+                foreach (var n in administra)
+                {
+                    var evento = db.tbl_evento.Find(n.tbl_evento_id);
+                    administrador += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
+                    administrador += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
+                    administrador += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + evento.tbl_evento_nombre + "</span>";
+                    administrador += "<span class=\"info-box-number\">" + evento.tbl_evento_lugar + "</span></div></div></div>";
+                }
+
+                foreach (var n in eventos)
+                {
+                    events += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
+                    events += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
+                    events += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + n.tbl_evento_nombre + "</span>";
+                    events += "<span class=\"info-box-number\">" + n.tbl_evento_lugar + "</span></div></div></div>";
+                }
+
+                foreach (var n in proyectos)
+                {
+                    projects += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
+                    projects += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
+                    projects += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + n.tbl_proyecto_git + "</span>";
+                    projects += "<span class=\"info-box-number\">" + n.tbl_proyecto_nombre + "</span></div></div></div>";
+                }
+
+                ViewBag.Proyectos = projects;
+                ViewBag.Administrador = administrador;
+                ViewBag.Eventos = events;
+                ViewBag.Equipos = groups;
+                ViewBag.Jurado = jurado;
+
                 return View(model);
             }
             return RedirectToAction("Error404");

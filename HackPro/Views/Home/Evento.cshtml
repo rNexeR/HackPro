@@ -3,180 +3,178 @@
 @{
     ViewBag.TitleHead = @Model.tbl_evento_nombre;
 }
-    <div class="login-logo">
-        <p style="font-family: Lucida Calligraphy"><b>@Html.DisplayFor(model => model.tbl_evento_nombre)</b><hr/>
-    </div>
+<div class="login-logo">
+    <p style="font-family: Lucida Calligraphy"><b>@Html.DisplayFor(model => model.tbl_evento_nombre)</b><hr />
+</div>
 
-    <ul style="margin: 0; padding: 0">
-        <li>
-            <div class="row" alig="center">
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>##</h3>
-                            <p>Usuarios Registrados</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-person-add"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            detalles <i class="fa fa-arrow-circle-right"></i>
-                        </a>
+<ul style="margin: 0; padding: 0">
+    <li>
+        <div class="row" alig="center">
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>@Model.usuarios_registrados</h3>
+                        <p>Usuarios Registrados</p>
                     </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>##</h3>
-                            <p>Equipos Registrados</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion-person-stalker"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            detalles <i class="fa fa-arrow-circle-right"></i>
-                        </a>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
                     </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>##</h3>
-                            <p>Proyectos Registrados</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion-social-github"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            detalles <i class="fa fa-arrow-circle-right"></i>
-                        </a>
+                    <a href="/Home/UsuariosEvento?id=@Model.id" class="small-box-footer">
+                        detalles <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>@Model.equipos_registrados</h3>
+                        <p>Equipos Registrados</p>
                     </div>
-                </div><!-- ./col -->
-                <div class="col-lg-3 col-xs-6">
-                    <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h3>##</h3>
-                            <p>Jurados Registrados</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion-android-checkbox-outline"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            detalles <i class="fa fa-arrow-circle-right"></i>
-                        </a>
+                    <div class="icon">
+                        <i class="ion-person-stalker"></i>
                     </div>
-                </div><!-- ./col -->
-            </div>
-        </li>
-    </ul>
+                    <a href="/Home/EquiposEvento?id=@Model.id" class="small-box-footer">
+                        detalles <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>@Model.proyectos_registrados</h3>
+                        <p>Proyectos Registrados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-social-github"></i>
+                    </div>
+                    <a href="/Home/ProyectosEvento?id=@Model.id" class="small-box-footer">
+                        detalles <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3>@Model.jurados_registrados</h3>
+                        <p>Jurados Registrados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-android-checkbox-outline"></i>
+                    </div>
+                    <a href="/Home/JuradosEvento?id=@Model.id" class="small-box-footer">
+                        detalles <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div><!-- ./col -->
+        </div>
+    </li>
+</ul>
 
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_desc).ToString().ToUpper()
-            </dt>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_desc).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_desc)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_desc)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_cat_evento).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_cat_evento).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_cat_evento)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_cat_evento)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_precio).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_precio).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_precio)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_precio)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_url).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_url).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_url)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_url)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_lugar).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_lugar).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_lugar)
-            </dd>
-            <!--
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_lugar_x).ToString().ToUpper()
-            </dt>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_lugar)
+    </dd>
+    <!--
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_lugar_x).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_lugar_x)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_lugar_x)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_lugar_y).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_lugar_y).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_lugar_y)
-            </dd>
-            -->
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_duracion).ToString().ToUpper()
-            </dt>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_lugar_y)
+    </dd>
+    -->
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_duracion).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_duracion)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_duracion)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_fecha_inicio).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_fecha_inicio).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_fecha_inicio).ToString()
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_fecha_inicio).ToString()
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_fecha_fin).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_fecha_fin).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_fecha_fin)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_fecha_fin)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_presupuesto).ToString().ToUpper()
-            </dt>
+    <dt>
+        @Html.DisplayNameFor(model => model.tbl_evento_presupuesto).ToString().ToUpper()
+    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_presupuesto)
-            </dd>
+    <dd>
+        @Html.DisplayFor(model => model.tbl_evento_presupuesto)
+    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_cal_jurado).ToString().ToUpper()
-            </dt>
+</dl>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_cal_jurado)
-            </dd>
+<br/>
+<div style="margin-bottom: -1%">
+    <h3><b>CALIFICACION</b></h3>
+</div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tbl_evento_cal_pueblo).ToString().ToUpper()
-            </dt>
+<ul style="margin: 0; padding: 0">
+    <li>
+        <div class="row" alig="center">
+                @Html.Raw(ViewBag.HtmlStr)
+        </div>
+    </li>
+</ul>
 
-            <dd>
-                @Html.DisplayFor(model => model.tbl_evento_cal_pueblo)
-            </dd>
-
-        </dl>

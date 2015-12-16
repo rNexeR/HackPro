@@ -60,5 +60,10 @@ namespace HackPro.Models
 
         [DisplayName("Categoria")]
         public string tbl_cat_evento { get; set; }
+
+        public int usuarios_registrados { get; set; }
+        public int equipos_registrados { get; set; }
+        public int jurados_registrados { get; set; }
+        public int proyectos_registrados { get; set; }
     }
 }
