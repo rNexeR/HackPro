@@ -55,6 +55,8 @@ namespace HackPro.Controllers
             int cant_eventos = eventos.Count();
             for (int i = 0; i < cant_eventos; i++)
             {
+                if (!eventos[i].tbl_evento_activo)
+                    continue;
                 //foreach(var x in eventos)
                 //{
                 //Format

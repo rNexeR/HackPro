@@ -67,6 +67,10 @@ namespace HackPro.Controllers
             int cant_eventos = eventos.Count();
             for (int i = 0; i < cant_eventos; i++)
             {
+
+                if (!eventos[i].tbl_evento_activo)
+                    continue;
+
                 lista += "{\"Id\":" + (i + 1) + ",";
                 lista += "\"PlaceName\": \"" + eventos[i].tbl_evento_lugar + "\",";
                 lista += "\"Fecha\": \"" + eventos[i].tbl_evento_fecha_inicio + "\", ";
