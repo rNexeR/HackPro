@@ -669,6 +669,26 @@ namespace HackPro.Controllers
             return View(model);
         }
 
+        //Cuando se haya elegido desde el mapa (x, y)
+        public ActionResult CrearEvento(decimal latitud, decimal longitud)
+        {
+            if (Session["UserId"] == null)
+                return RedirectToAction("Login", "Home");
+            else if (Session["Admin"].Equals(false))
+                return RedirectToAction("PermissionError");
+            var model = new Evento();
+            var db = new hackprodb_1Entities();
+            model.cat_evento = db.tbl_cat_evento.ToList().Select(x => new SelectListItem
+            {
+                Value = x.tbl_cat_evento_id.ToString(),
+                Text = x.tbl_cat_evento_desc
+            });
+            model.tbl_evento_lugar_x = latitud;
+            model.tbl_evento_lugar_y = longitud;
+            Console.WriteLine("Lat: " + latitud + " Long: " + longitud);
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult CrearEvento(Evento even)
         {
