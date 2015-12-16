@@ -59,8 +59,28 @@ namespace HackPro.Controllers
         {
             if (Session["UserId"] != null)
                 return RedirectToAction("Index", "Logged");
-            else
-                return View();
+
+            var db = new hackprodb_1Entities();
+            var eventos = db.tbl_evento.ToList();
+
+            var lista = "";
+            int cant_eventos = eventos.Count();
+            for (int i = 0; i < cant_eventos; i++)
+            {
+                lista += "{\"Id\":" + (i + 1) + ",";
+                lista += "\"PlaceName\": \"" + eventos[i].tbl_evento_lugar + "\",";
+                lista += "\"Fecha\": \"" + eventos[i].tbl_evento_fecha_inicio + "\", ";
+                lista += "\"NombreEvento\": \"" + eventos[i].tbl_evento_nombre + "\", ";
+                lista += "\"GeoLat\": \"" + eventos[i].tbl_evento_lugar_x + "\", ";
+                lista += "\"GeoLong\": \"" + eventos[i].tbl_evento_lugar_y + "\"}";
+
+                if (i != cant_eventos - 1)
+                    lista += ",";
+            }
+            @ViewBag.HtmlStr = lista;
+
+            return View();
+
         }
 
         public ActionResult Register()
@@ -183,8 +203,8 @@ namespace HackPro.Controllers
             model.tbl_evento_url = ev.tbl_evento_url;
 
 
-            string html = ""; 
-                //"< ul style = \"margin: 0; padding: 0\" >< li >< div class=\"row\" alig=\"center\">";
+            string html = "";
+            //"< ul style = \"margin: 0; padding: 0\" >< li >< div class=\"row\" alig=\"center\">";
 
             if (!model.tbl_evento_cal_jurado && !model.tbl_evento_cal_pueblo)
             {
@@ -249,7 +269,7 @@ namespace HackPro.Controllers
 
             foreach (var n in equipos)
             {
-                
+
                 var usuarios = db.tbl_equipo_usuario.Where(p => p.tbl_equipo_id == n.tbl_equipo_id).ToList();
                 foreach (var m in usuarios)
                 {
@@ -276,10 +296,10 @@ namespace HackPro.Controllers
             foreach (var n in equipos)
             {
                 int admin = db.tbl_equipo.Find(n.tbl_equipo_id).tbl_equipo_usuario_admin;
-                    html += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
-                    html += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
-                    html += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + db.tbl_usuario.Find(admin).tbl_usuario_username + "</span>";
-                    html += "<span class=\"info-box-number\">" + db.tbl_equipo.Find(n.tbl_equipo_id).tbl_equipo_nombre + "</span></div></div></div>";
+                html += "<div class=\"col-md-3 col-sm-6 col-xs-12\"><div class=\"info-box\">";
+                html += "<span class=\"info-box-icon bg-aqua\"><i class=\"fa fa-envelope-o\"></i></span>";
+                html += "<div class=\"info-box-content\"><span class=\"info-box-text\">" + db.tbl_usuario.Find(admin).tbl_usuario_username + "</span>";
+                html += "<span class=\"info-box-number\">" + db.tbl_equipo.Find(n.tbl_equipo_id).tbl_equipo_nombre + "</span></div></div></div>";
             }
             ViewBag.HtmlStr = html;
             return View();

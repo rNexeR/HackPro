@@ -53,13 +53,13 @@ namespace HackPro.Controllers
 
             var lista = "";
             int cant_eventos = eventos.Count();
-            for(int i = 0; i < cant_eventos; i++)
-            {            
-            //foreach(var x in eventos)
-            //{
+            for (int i = 0; i < cant_eventos; i++)
+            {
+                //foreach(var x in eventos)
+                //{
                 //Format
                 //{ "Id": 1, "PlaceName": "Wonderland", "Fecha": "9-5, M-F", "GeoLat": "15.473692", "GeoLong": "-88.004896" },
-                lista += "{\"Id\":" + /*eventos[i].tbl_evento_id*/ (i+1) + ",";
+                lista += "{\"Id\":" + /*eventos[i].tbl_evento_id*/ (i + 1) + ",";
                 lista += "\"PlaceName\": \"" + eventos[i].tbl_evento_lugar + "\",";
                 lista += "\"Fecha\": \"" + eventos[i].tbl_evento_fecha_inicio + "\", ";
                 lista += "\"NombreEvento\": \"" + eventos[i].tbl_evento_nombre + "\", ";
@@ -132,12 +132,12 @@ namespace HackPro.Controllers
                 var equipo = db.tbl_equipo.Find(x.tbl_equipo_id);
 
                 int user_id = Convert.ToInt16(Session["UserId"]);
-                var exist_user = db.tbl_equipo_usuario.Where(a => a.tbl_usaurio_id == user_id && 
+                var exist_user = db.tbl_equipo_usuario.Where(a => a.tbl_usaurio_id == user_id &&
                     a.tbl_equipo_id == x.tbl_equipo_id);
 
                 if (!equipo.tbl_equipo_activo || !x.tbl_proyecto_activo || !exist_user.Any())
                     continue;
-                
+
                 lista += "<div class=\"col-lg-3 col-xs-6\">";
                 lista += "<div class=\"small-box bg-red\">";
                 lista += "<div class=\"inner\">";
@@ -150,7 +150,7 @@ namespace HackPro.Controllers
             @ViewBag.HtmlStr = lista;
             return View();
         }
-        
+
         [HttpGet]
         public ActionResult Equipos()
         {
@@ -164,7 +164,7 @@ namespace HackPro.Controllers
                 var team = db.tbl_equipo.Find(x.tbl_equipo_id);
                 if (!team.tbl_equipo_activo ||
                     !x.tbl_usaurio_id.ToString().Equals(Session["UserId"].ToString()))
-                    continue;             
+                    continue;
 
                 lista += "<div class=\"col-lg-3 col-xs-6\">";
                 lista += "<div class=\"small-box bg-aqua\">";
@@ -181,7 +181,7 @@ namespace HackPro.Controllers
             @ViewBag.HtmlStr = lista;
             return View();
         }
-        
+
         [HttpGet]
         public ActionResult Patrocinios()
         {
