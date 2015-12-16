@@ -84,15 +84,15 @@
 
             // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
             google.maps.event.addListener(marker, 'click', function () {
-                map.setZoom(13);
+                map.setZoom(14);
                 infowindow.open(map, marker);
             });
 
             google.maps.event.addListener(map, 'dblclick', function (event) {
                 if (event.handled !== true) {
                     event.handled = true;
-                    map.setZoom(13);
-                    alert('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
+                    map.setZoom(14);
+                    alert('Latitud es ' + event.latLng.lat() + ' y longitud es: ' + event.latLng.lng());
 
                     var crearEv = confirm("¿Crear evento en estas coordenadas?");
                     if (crearEv === true) {
