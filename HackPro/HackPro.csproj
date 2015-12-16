@@ -1407,7 +1407,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoggedController.cs" />
-    <Compile Include="Controllers\SemiAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1526,7 +1525,7 @@
     <Content Include="Views\Home\JuradosEvento.cshtml" />
     <Content Include="Views\Home\Equipo.cshtml" />
     <None Include="Views\Logged\Equipos.cshtml" />
-    <Content Include="Views\SemiAdmin\CrearEquipo.cshtml" />
+    <Content Include="Views\Logged\CrearEquipo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

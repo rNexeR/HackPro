@@ -739,7 +739,8 @@ namespace HackPro.Controllers
                 return RedirectToAction("Login", "Home");
             else if (Session["Admin"].Equals(false))
                 return RedirectToAction("PermissionError");
-            return View();
+
+            return RedirectToAction("CrearEquipo", "Logged");
         }
 
         [HttpPost]
@@ -749,20 +750,22 @@ namespace HackPro.Controllers
                 return RedirectToAction("Login", "Home");
             else if (Session["Admin"].Equals(false))
                 return RedirectToAction("PermissionError");
-            if (ModelState.IsValid)
-            {
-                var db = new hackprodb_1Entities();
-                var equipos = new tbl_equipo();
 
-                equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
-                equipos.tbl_equipo_activo = true;
-                equipos.tbl_equipo_fecha_creacion = DateTime.Today;
-                equipos.tbl_equipo_usuario_admin = int.Parse(Session["UserId"].ToString());
+            return RedirectToAction("CrearEquipo", "Logged");
+            //if (ModelState.IsValid)
+            //{
+            //    var db = new hackprodb_1Entities();
+            //    var equipos = new tbl_equipo();
 
-                db.tbl_equipo.Add(equipos);
-                db.SaveChanges();
-            }
-            return RedirectToAction("CrearEvento");
+            //    equipos.tbl_equipo_nombre = equipo.tbl_equipo_nombre;
+            //    equipos.tbl_equipo_activo = true;
+            //    equipos.tbl_equipo_fecha_creacion = DateTime.Today;
+            //    equipos.tbl_equipo_usuario_admin = int.Parse(Session["UserId"].ToString());
+
+            //    db.tbl_equipo.Add(equipos);
+            //    db.SaveChanges();
+            //}
+            //return RedirectToAction("CrearEvento");
         }
 
         [HttpGet]
