@@ -1,20 +1,111 @@
 ﻿
 @{
-    ViewBag.Title = "Home";
+    ViewBag.TitleHead = "Home";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<meta charset="UTF-8">
-<link rel="stylesheet" href="~/Content/css/style.css">
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 
-    <div id="regbar">
-            <ul>
-                <li>
-                    <a href="/Home/Register"><h3 class="ref">Sign up</h3></a>
-                    <a href="/Home/Login"><h3 class="ref">Sign in</h3></a>
-                </li>
-            </ul>
-    </div>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<!-- This css is to ensure that the google map contols (zoom bar etc) show and size correctly. -->
+<style>
+    #map_canvas img {
+        max-width: none;
+    }
+</style>
 
-<script src="~/Content/js/index.js"></script>
+<!-- This css is to give a nice big popup "info window" when a marker is clicked on the map -->
+<style>
+    .infoDiv {
+        height: 200px;
+        width: 300px;
+        -webkit-user-select: none;
+        background-color: white;
+    }
+</style>
+
+<!-- This is the div that will contain the Google Map -->
+<div id="map_canvas" style="height: 940px;"></div>
+
+<!-- Enclose the Javascript in a "section" so that it is rendered in the correct order after scripts have been loaded etc -->
+@section scripts {
+    <section class="scripts">
+
+        <script type="text/javascript">
+
+    //<!-- This code tells the browser to execute the "Initialize" method only when the complete document model has been loaded. -->
+    $(document).ready(function () {
+        Initialize();
+    });
+
+    // Where all the fun happens
+    function Initialize() {
+
+        // Google has tweaked their interface somewhat - this tells the api to use that new UI
+        google.maps.visualRefresh = true;
+        var Honduras = new google.maps.LatLng(14.6322149, -86.6498088);
+
+        // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
+        var mapOptions = {
+            zoom: 8,
+            center: Honduras,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        // This makes the div with id "map_canvas" a google map
+        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+        // This shows adding a simple pin "marker" - this happens to be the Tate Gallery in Liverpool!
+        var myLatlng = new google.maps.LatLng(15.470495, -88.005840);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Estado Olímpico'
+        });
+
+        // You can make markers different colors...  google it up!
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+
+        // a sample list of JSON encoded data of places to visit in Liverpool, UK
+        // you can either make up a JSON list server side, or call it from a controller using JSONResult
+        var data = [
+                  { "Id": 1, "PlaceName": "Wonderland", "Fecha": "9-5, M-F", "GeoLong": "15.473692", "GeoLat": "-88.004896" },
+                  { "Id": 2, "PlaceName": "Centro Cultural Sampedrano ", "Fecha": "9-1,2-5, M-F https://github.com", "GeoLong": "15.509690", "GeoLat": "-88.026510" },
+                  { "Id": 3, "PlaceName": "Unitec - GNH", "Fecha": "10-12 Dic, M-F", "GeoLong": "15.562553", "GeoLat": "-88.023692" },
+                  { "Id": 4, "PlaceName": "Unitec - The Hack", "Fecha": "10-12 Dic, M-F", "GeoLong": "15.562553", "GeoLat": "-88.023590" }
+               ];
+
+        // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
+        $.each(data, function (i, item) {
+            var marker = new google.maps.Marker({
+                'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
+                'map': map,
+                'title': item.PlaceName
+            });
+
+            // Make the marker-pin blue!
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+
+            // put in some information about each json object - in this case, the opening hours.
+            var infowindow = new google.maps.InfoWindow({
+                content: "<div class='infoDiv'><h2>" + item.PlaceName + "</h2>" + "<div><h4>Fecha: " + item.Fecha + "</h4></div></div>"
+            });
+
+            // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
+            google.maps.event.addListener(marker, 'click', function () {
+                map.setZoom(16);
+                infowindow.open(map, marker);
+            });
+
+            google.maps.event.addListener(map, 'dblclick', function (event) {
+                map.setZoom(16);
+                alert('Lat: ' + event.latLng.lat() + ' and Longitude is: ' + event.latLng.lng());
+            });
+
+        })
+    }
+
+        </script>
+    </section>
+}
+

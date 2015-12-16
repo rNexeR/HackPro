@@ -9,21 +9,24 @@ ul {
   width: 100%;
   top: 20%;
   margin-top: -15px; /* 50% of the line-height in a */
-  text-align: right;
+  text-align: center;
 }
 li {
   display: inline-block;
   list-style: none;
-  margin-right: 5px;
 }
 
 li:first-child { margin-right: 20%;}
 
 #regbar {
-    height: 80px;
+    z-index: 1;
+    height: 50px;
     width: 100%;
     background: #34495e;
-    margin-top: -20px;
+    margin-top: -50px;
+    opacity: 0.7;
+    text-align: center;
+    vertical-align: central;
 }
 
 #navthing {
@@ -41,6 +44,13 @@ li:first-child { margin-right: 20%;}
 }
 
 .ref {
+    color: #ecf0f1;
+    display: inline-block;
+    position: relative;
+    margin: auto;
+}
+
+.separador {
     padding: 20px;
     color: #ecf0f1;
     display: inline-block;
